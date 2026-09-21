@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f7eef3">
+<title>09.22 THE LAST PIECE</title>
+<style>
+:root{
+  --ink:#23344c;
+  --muted:#718091;
+  --pink:#e89aad;
+  --pink2:#f7dce4;
+  --blue:#8db9d6;
+  --blue2:#ddecf5;
+  --gold:#c7a56a;
+  --cream:#fffaf3;
+  --paper:#fffefd;
+  --navy:#122747;
+  --line:rgba(43,65,91,.11);
+  --shadow:0 18px 48px rgba(51,70,91,.10);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic","Noto Sans JP",sans-serif;
+  color:var(--ink);
+  background:
+    radial-gradient(circle at 50% 0%,rgba(255,255,255,.95),transparent 28%),
+    linear-gradient(180deg,#dfeef8 0%,#fff5ee 27%,#fffaf6 64%,#edf4fb 100%);
+  overflow-x:hidden;
+}
+button{font:inherit}
+button:disabled{opacity:.45;cursor:not-allowed}
+.app{width:100%;max-width:520px;margin:auto;min-height:100vh;padding-bottom:90px}
+.hidden{display:none!important}
+
+/* HERO */
+.hero{
+  min-height:92svh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:56px 20px 34px;
+  position:relative;
+  overflow:hidden;
+  text-align:center;
+}
+.hero::before{
+  content:"";
+  position:absolute;inset:0;
+  background:
+    radial-gradient(circle at 15% 26%,rgba(255,255,255,.85) 0 2px,transparent 3px),
+    radial-gradient(circle at 76% 16%,rgba(255,255,255,.9) 0 2px,transparent 3px),
+    radial-gradient(circle at 84% 40%,rgba(255,255,255,.82) 0 1px,transparent 2px),
+    linear-gradient(165deg,transparent 0 44%,rgba(245,204,215,.22) 45% 62%,transparent 63%);
+  pointer-events:none;
+}
+.hero-card{position:relative;z-index:1}
+.date{
+  font-family:Georgia,serif;
+  font-size:clamp(62px,19vw,98px);
+  line-height:.9;
+  letter-spacing:.01em;
+  color:#9b7742;
+  text-shadow:0 2px 0 #fff,0 10px 24px rgba(143,109,64,.14);
+}
+.hero h1{
+  font-family:Georgia,serif;
+  font-size:clamp(27px,7vw,38px);
+  letter-spacing:.11em;
+  margin:12px 0 16px;
+}
+.hero-copy{font-size:14px;line-height:1.85;color:#48586b;margin:0 auto;max-width:330px}
+.piece-progress{
+  display:flex;justify-content:center;gap:9px;margin:26px 0 8px;
+}
+.piece-dot{
+  width:36px;height:36px;
+  display:grid;place-items:center;
+  border-radius:10px;
+  background:#ffffff9c;
+  border:1px solid rgba(255,255,255,.95);
+  box-shadow:0 8px 18px rgba(70,85,105,.08);
+  color:#b6bcc3;
+  transition:.35s ease;
+}
+.piece-dot.got{background:linear-gradient(145deg,#fff,#f8d8e2);color:#d86f8b;transform:rotate(-4deg) scale(1.04)}
+.progress-label{font-size:11px;font-weight:900;letter-spacing:.17em;color:#748393}
+.start-btn,.primary{
+  border:0;border-radius:999px;
+  background:linear-gradient(135deg,#e98ca5,#d87794);
+  color:#fff;font-weight:900;
+  box-shadow:0 12px 28px rgba(204,101,130,.25);
+}
+.start-btn{margin-top:24px;padding:16px 38px;min-width:230px;font-size:18px;letter-spacing:.12em}
+.hero-secret{font-size:12px;color:#6d7783;margin-top:17px}
+.hero-visual{
+  width:100%;height:180px;margin:34px auto 0;
+  border-radius:30px;overflow:hidden;position:relative;
+  background:
+    radial-gradient(circle at 76% 18%,#ffe1a6 0 9%,transparent 10%),
+    linear-gradient(180deg,#8dc7e5 0 48%,#f1b7b8 49% 62%,#5a6a83 63% 100%);
+  box-shadow:var(--shadow);
+}
+.hero-visual::after{
+  content:"🚗  ♡";
+  position:absolute;left:18px;bottom:16px;
+  font-size:32px;filter:drop-shadow(0 3px 6px rgba(0,0,0,.12));
+}
+.hero-visual .couple{position:absolute;right:24px;bottom:14px;font-size:62px;letter-spacing:-17px}
+
+/* section */
+.section{padding:30px 16px 6px}
+.section-title{text-align:center;margin-bottom:22px}
+.section-title small{font-size:10px;letter-spacing:.2em;color:#8c98a7;font-weight:900}
+.section-title h2{font-family:Georgia,serif;font-size:27px;letter-spacing:.11em;margin:8px 0 5px}
+.section-title p{font-size:12px;color:var(--muted);line-height:1.7;margin:0}
+
+/* mission cards */
+.mission-list{display:grid;gap:13px}
+.mission{
+  background:rgba(255,255,255,.82);
+  border:1px solid rgba(255,255,255,.95);
+  border-radius:23px;
+  padding:17px;
+  box-shadow:var(--shadow);
+  position:relative;
+  overflow:hidden;
+}
+.mission.locked{filter:saturate(.55);opacity:.74}
+.mission-head{display:flex;align-items:center;gap:13px}
+.mission-no{
+  width:35px;height:35px;border-radius:50%;display:grid;place-items:center;
+  flex:0 0 auto;font-weight:900;color:white;
+  background:linear-gradient(145deg,var(--pink),#d97590);
+}
+.mission:nth-child(even) .mission-no{background:linear-gradient(145deg,var(--blue),#6ea2c6)}
+.mission-icon{
+  width:52px;height:52px;border-radius:16px;
+  display:grid;place-items:center;font-size:27px;
+  background:linear-gradient(145deg,#f7fbfd,#edf3f6);
+}
+.mission-copy{flex:1;min-width:0}
+.mission-copy b{display:block;font-family:Georgia,serif;letter-spacing:.07em;font-size:16px}
+.mission-copy span{display:block;color:var(--muted);font-size:12px;line-height:1.55;margin-top:4px}
+.mission-tag{
+  margin-top:13px;display:flex;align-items:center;justify-content:space-between;gap:10px;
+  border-radius:15px;padding:11px 13px;
+  background:linear-gradient(135deg,#fff7fa,#f8e6ec);
+  color:#b8657d;font-size:11px;font-weight:900;letter-spacing:.07em;
+}
+.mission:nth-child(even) .mission-tag{background:linear-gradient(135deg,#f4f9fd,#e5f0f7);color:#5684a6}
+.mission-actions{display:flex;gap:9px;margin-top:13px}
+.mission-actions button{flex:1;padding:12px 10px;border-radius:14px;border:1px solid var(--line);font-size:12px;font-weight:900}
+.check-btn{background:#fff;color:#4f6377}
+.game-btn{background:var(--navy);color:white}
+.game-btn.locked{background:#d6dce1;color:#7f8992}
+.clear-stamp{
+  position:absolute;right:-10px;top:12px;
+  transform:rotate(10deg);padding:7px 14px;border-radius:999px;
+  background:#fff4f7;color:#d46f8a;border:2px solid #eba2b5;
+  font-weight:950;font-size:11px;letter-spacing:.08em;
+}
+
+/* pieces */
+.piece-board{
+  background:rgba(255,252,248,.90);
+  border-radius:28px;
+  padding:22px 14px;
+  box-shadow:var(--shadow);
+  border:1px solid rgba(255,255,255,.95);
+}
+.pieces{display:grid;grid-template-columns:repeat(5,1fr);gap:7px;margin-top:17px}
+.piece{
+  aspect-ratio:.78;
+  border-radius:16px;
+  display:flex;align-items:center;justify-content:center;
+  text-align:center;
+  font-family:Georgia,serif;font-size:10px;line-height:1.3;
+  color:#38495d;
+  border:1px solid rgba(68,81,100,.09);
+  background:#eceff1;
+  position:relative;
+  box-shadow:0 9px 18px rgba(53,69,88,.06);
+  transition:.35s ease;
+}
+.piece::before{content:"✦";position:absolute;top:8px;font-size:11px;opacity:.4}
+.piece:nth-child(1),.piece:nth-child(4){background:#dcecf6}
+.piece:nth-child(3),.piece:nth-child(5){background:#f7dce5}
+.piece:nth-child(2){background:#fff2de}
+.piece.unearned{filter:grayscale(1);opacity:.32}
+.piece.earned{transform:translateY(-3px);box-shadow:0 14px 24px rgba(64,78,98,.12)}
+.mystery-note{text-align:center;color:#7d8792;font-size:11px;margin-top:15px}
+
+/* final */
+.final-zone{
+  margin:28px 16px 0;
+  background:
+    radial-gradient(circle at 50% 0%,rgba(255,255,255,.14),transparent 30%),
+    linear-gradient(180deg,#18325a,#0c1930);
+  color:white;border-radius:30px;padding:28px 18px 30px;
+  box-shadow:0 24px 55px rgba(10,29,56,.25);
+  text-align:center;position:relative;overflow:hidden;
+}
+.final-zone::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(circle at 16% 22%,#fff 0 1px,transparent 2px),
+    radial-gradient(circle at 80% 12%,#fff 0 1px,transparent 2px),
+    radial-gradient(circle at 66% 42%,#fff 0 1px,transparent 2px),
+    radial-gradient(circle at 25% 60%,#fff 0 1px,transparent 2px);
+  opacity:.65;
+}
+.final-zone>*{position:relative;z-index:1}
+.final-zone h2{font-family:Georgia,serif;letter-spacing:.14em;font-size:25px}
+.final-zone p{font-size:12px;line-height:1.9;color:#dce7f5}
+.final-open{padding:14px 20px;width:100%;margin-top:14px;border:0;border-radius:999px;background:#fff4dc;color:#31435f;font-weight:950;letter-spacing:.08em}
+
+/* modal */
+.modal{position:fixed;inset:0;z-index:30;background:rgba(15,24,40,.55);display:flex;align-items:flex-end;justify-content:center;padding:12px}
+.modal-card{
+  width:min(100%,500px);max-height:88svh;overflow:auto;
+  border-radius:28px 28px 22px 22px;background:#fffefc;
+  padding:21px 17px calc(20px + env(safe-area-inset-bottom));
+  box-shadow:0 30px 80px rgba(10,22,40,.30);
+}
+.modal-head{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.modal-title{font-family:Georgia,serif;font-size:22px;letter-spacing:.05em}
+.close{border:0;background:#eef2f5;width:36px;height:36px;border-radius:50%;font-size:18px}
+.game-area{
+  min-height:260px;margin-top:16px;border-radius:22px;
+  background:linear-gradient(180deg,#eef7fc,#fff4f5);
+  border:1px solid #fff;
+  position:relative;overflow:hidden;padding:18px;
+}
+.game-note{font-size:13px;color:#617183;line-height:1.8;text-align:center}
+.game-status{min-height:24px;text-align:center;color:#c46682;font-weight:900;font-size:13px;margin-top:12px}
+.primary{width:100%;padding:14px;margin-top:14px}
+.secondary{width:100%;padding:12px;margin-top:9px;border:1px solid var(--line);background:#fff;border-radius:999px;color:#58687a;font-weight:900}
+
+/* timing */
+.timing-track{height:16px;border-radius:999px;background:#dfe7ec;position:relative;margin:72px 5px 18px}
+.target-zone{position:absolute;left:43%;width:14%;top:-5px;height:26px;border-radius:999px;background:#f3a8ba}
+.marker{position:absolute;left:0;top:-9px;width:12px;height:34px;border-radius:8px;background:#17325a;box-shadow:0 5px 10px rgba(0,0,0,.2)}
+
+/* shooting */
+.shoot-field{position:absolute;inset:0}
+.target{
+  position:absolute;width:48px;height:48px;border:0;border-radius:50%;
+  display:grid;place-items:center;font-size:27px;background:#ffffffc9;
+  box-shadow:0 8px 18px rgba(47,64,85,.12)
+}
+
+/* shuffle */
+.cards{display:flex;gap:12px;justify-content:center;margin-top:45px}
+.shuffle-card{
+  width:82px;height:110px;border:0;border-radius:18px;
+  background:#fff;box-shadow:0 10px 22px rgba(44,61,80,.12);font-size:38px
+}
+.shuffle-card.covered{font-size:0;background:linear-gradient(145deg,#d9ecf6,#f6dce5)}
+.shuffle-card.covered::after{content:"?";font-size:32px;color:#7990a2}
+
+/* star */
+.star-field{position:absolute;inset:0}
+.star-btn{position:absolute;border:0;background:transparent;font-size:34px;filter:drop-shadow(0 4px 8px rgba(0,0,0,.13))}
+
+/* sync */
+.sync-wrap{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:46px}
+.sync-btn{height:120px;border:0;border-radius:23px;color:white;font-weight:900;font-size:15px}
+.sync-a{background:linear-gradient(145deg,#759fbe,#507b9c)}
+.sync-b{background:linear-gradient(145deg,#e49aad,#c97189)}
+
+/* micro riddle */
+.riddle{margin-top:16px;background:#fff;border-radius:20px;padding:16px;border:1px solid var(--line)}
+.riddle h4{margin:0 0 12px;font-size:14px}
+.options{display:grid;gap:8px}
+.options button{border:1px solid var(--line);background:#f8fafb;border-radius:13px;padding:11px;font-weight:800;color:#526174}
+
+/* puzzle */
+.puzzle-stage{padding:8px 0}
+.puzzle-help{font-size:12px;color:#718091;line-height:1.8;text-align:center}
+.puzzle-slots{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:18px}
+.slot{
+  min-height:96px;border:1.5px dashed #bac7d1;border-radius:16px;
+  display:flex;align-items:center;justify-content:center;text-align:center;
+  color:#a6b0b8;font-size:10px;padding:6px;background:#f8fafb
+}
+.slot.filled{border-style:solid;background:#fff}
+.inventory{display:grid;grid-template-columns:repeat(5,1fr);gap:7px;margin-top:16px}
+.inv-piece{padding:12px 4px;border:1px solid var(--line);border-radius:13px;background:#fff;font-size:9px;font-weight:900;color:#526174}
+.inv-piece.selected{outline:3px solid #efafc0;background:#fff4f7}
+.dual-final{margin-top:18px;padding:16px;border-radius:20px;background:#eef4f8}
+.dual-buttons{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:10px}
+.dual-buttons button{height:72px;border:0;border-radius:18px;color:white;font-weight:900}
+.dual-buttons button:first-child{background:#5f8ead}
+.dual-buttons button:last-child{background:#d98299}
+
+/* decoder */
+.decoder{
+  margin-top:18px;border-radius:22px;padding:22px 16px;
+  background:linear-gradient(145deg,#f9e7ed,#fff8ef);
+  text-align:center
+}
+.decoder h3{font-family:Georgia,serif;letter-spacing:.08em}
+.hold-zone{
+  margin-top:15px;height:120px;border-radius:20px;
+  border:1px dashed #cb9aae;
+  display:flex;align-items:center;justify-content:center;
+  color:#9d6a7d;font-weight:900;touch-action:none;user-select:none
+}
+.final-message{
+  margin-top:18px;padding:22px 16px;border-radius:22px;
+  background:#fff;color:#2e3d50;text-align:left;
+  line-height:2;font-size:15px;
+  box-shadow:0 14px 30px rgba(25,42,64,.12)
+}
+.final-message strong{color:#cb657f}
+.final-note{text-align:center;font-size:12px;color:#789;margin-top:12px}
+
+/* toast */
+.toast{
+  position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom));transform:translateX(-50%) translateY(30px);
+  z-index:50;background:#17304f;color:white;padding:12px 17px;border-radius:999px;
+  font-size:12px;font-weight:900;opacity:0;pointer-events:none;transition:.25s ease;white-space:nowrap
+}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+@media(max-width:360px){
+  .date{font-size:65px}
+  .hero h1{font-size:25px}
+  .pieces{gap:5px}
+  .piece{font-size:9px}
+}
+</style>
+</head>
+<body>
+<main class="app">
+
+<section class="hero" id="top">
+  <div class="hero-card">
+    <div class="date">09.22</div>
+    <h1>THE LAST PIECE</h1>
+    <p class="hero-copy">イベントをクリアして、最後のPieceを完成させよう。<br>今日一日のどこかに、5つのPieceが隠れています。</p>
+    <div class="piece-progress" id="heroPieces"></div>
+    <div class="progress-label" id="progressLabel">PIECE 0 / 5</div>
+    <button class="start-btn" id="startButton">START ›</button>
+    <div class="hero-secret">最後まで何が完成するかは秘密。</div>
+    <div class="hero-visual" aria-hidden="true"><div class="couple">🧑🏻‍🤝‍👩🏻</div></div>
+  </div>
+</section>
+
+<section class="section" id="missions">
+  <header class="section-title">
+    <small>5 EXPERIENCES, ONE STORY</small>
+    <h2>TODAY'S MISSION</h2>
+    <p>現実のミッションを達成すると、<br>その場所だけのミニゲームが解放されます。</p>
+  </header>
+  <div class="mission-list" id="missionList"></div>
+</section>
+
+<section class="section">
+  <header class="section-title">
+    <small>MYSTERY FRAGMENTS</small>
+    <h2>COLLECT THE PIECES</h2>
+    <p>Pieceには意味不明な記号だけ。<br>最後まで答えは読めません。</p>
+  </header>
+  <div class="piece-board">
+    <div class="pieces" id="pieceBoard"></div>
+    <div class="mystery-note">この時点では、何が完成するかはまだわからない。</div>
+  </div>
+</section>
+
+<section class="final-zone" id="finalZone">
+  <h2>FINAL UNLOCK</h2>
+  <p id="finalStatus">5つのPieceがそろうと、<br>2人協力パズルが解放されます。</p>
+  <button class="final-open" id="finalOpen" disabled>🔒 2 PLAYER PUZZLE</button>
+</section>
+
+</main>
+
+<div class="modal hidden" id="gameModal" role="dialog" aria-modal="true">
+  <div class="modal-card">
+    <div class="modal-head">
+      <div class="modal-title" id="modalTitle">MINI GAME</div>
+      <button class="close" id="closeModal">×</button>
+    </div>
+    <div class="game-area" id="gameArea"></div>
+    <div class="game-status" id="gameStatus"></div>
+    <div id="riddleArea"></div>
+  </div>
+</div>
+
+<div class="modal hidden" id="puzzleModal" role="dialog" aria-modal="true">
+  <div class="modal-card">
+    <div class="modal-head">
+      <div class="modal-title">2 PLAYER PUZZLE</div>
+      <button class="close" id="closePuzzle">×</button>
+    </div>
+    <div class="puzzle-stage" id="puzzleStage"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const missions=[
+ {title:"DRIVE START",icon:"📷",mission:"今日最初の写真を1枚撮る",game:"TIMING GAME",piece:"◇ 09·22 / N",kind:"timing",
+  riddle:{q:"今日の日付を完成させてください",options:["09 / 21","09 / 22","10 / 22"],answer:1}},
+ {title:"SANGA LUNCH",icon:"🍽️",mission:"いちばん美味しかったものを1つずつ決める",game:"HEART SHOOTING",piece:"□ 4C / WAVE / 13",kind:"shoot",
+  riddle:{q:"今日のランチに一番近いキーワードは？",options:["SEA","MOUNTAIN","SNOW"],answer:0}},
+ {title:"ANIMAL TIME",icon:"🐾",mission:"相手に一番似ている動物を1匹決める",game:"SHUFFLE GAME",piece:"○ K9 / 15:xx / ?",kind:"shuffle",
+  riddle:{q:"「モ・サ・ド・エ」を並べ替えると？",options:["サモエド","モエサド","エドサモ"],answer:0}},
+ {title:"NEXT PLAN",icon:"✨",mission:"次に一緒に行きたい場所を1つずつ言う",game:"STAR CATCH",piece:"☆ R-04 / NEXT",kind:"star",
+  riddle:{q:"このミッションが示す言葉は？",options:["PAST","NEXT","STOP"],answer:1}},
+ {title:"DINNER LAST PIECE",icon:"🥂",mission:"今日いちばん好きだった時間を1つずつ決める",game:"PERFECT SYNC",piece:"♡ 19:15 / LAST",kind:"sync",
+  riddle:{q:"最後のPieceを選んでください",options:["FIRST","MIDDLE","LAST"],answer:2}}
+];
+const state={checked:[false,false,false,false,false],pieces:[false,false,false,false,false]};
+try{
+ const saved=JSON.parse(localStorage.getItem("lastPieceV1")||"null");
+ if(saved?.checked?.length===5&&saved?.pieces?.length===5)Object.assign(state,saved);
+}catch(e){}
+const $=id=>document.getElementById(id);
+let activeGame=-1;
+let raf=null,interval=null,selectedInv=null;
+function save(){localStorage.setItem("lastPieceV1",JSON.stringify(state))}
+function toast(msg){
+ const el=$("toast");el.textContent=msg;el.classList.add("show");
+ clearTimeout(el._t);el._t=setTimeout(()=>el.classList.remove("show"),1900);
+}
+function pieceCount(){return state.pieces.filter(Boolean).length}
+function render(){
+ $("heroPieces").innerHTML=missions.map((_,i)=>`<div class="piece-dot ${state.pieces[i]?"got":""}">🧩</div>`).join("");
+ $("progressLabel").textContent=`PIECE ${pieceCount()} / 5`;
+ $("pieceBoard").innerHTML=missions.map((m,i)=>`<div class="piece ${state.pieces[i]?"earned":"unearned"}">${state.pieces[i]?m.piece:"LOCKED"}</div>`).join("");
+ $("missionList").innerHTML=missions.map((m,i)=>{
+   const available=i===0||state.pieces[i-1];
+   return `<article class="mission ${available?"":"locked"}">
+     ${state.pieces[i]?'<div class="clear-stamp">CLEAR ✓</div>':""}
+     <div class="mission-head">
+       <div class="mission-no">${i+1}</div><div class="mission-icon">${m.icon}</div>
+       <div class="mission-copy"><b>${m.title}</b><span>${m.mission}</span></div>
+     </div>
+     <div class="mission-tag"><span>${m.game}</span><span>${state.pieces[i]?"PIECE GET":"›"}</span></div>
+     <div class="mission-actions">
+       <button class="check-btn" data-check="${i}" ${!available||state.checked[i]?"disabled":""}>${state.checked[i]?"✓ 達成済み":"現実ミッション達成"}</button>
+       <button class="game-btn ${state.checked[i]&&!state.pieces[i]?"":"locked"}" data-game="${i}" ${!state.checked[i]||state.pieces[i]?"disabled":""}>${state.pieces[i]?"獲得済み":"ミニゲームを開く"}</button>
+     </div>
+   </article>`;
+ }).join("");
+ document.querySelectorAll("[data-check]").forEach(b=>b.onclick=()=>{
+   const i=+b.dataset.check;state.checked[i]=true;save();render();toast("MINI GAME UNLOCKED ✨");
+ });
+ document.querySelectorAll("[data-game]").forEach(b=>b.onclick=()=>openGame(+b.dataset.game));
+ const all=pieceCount()===5;
+ $("finalOpen").disabled=!all;
+ $("finalOpen").innerHTML=all?"✨ 2 PLAYER PUZZLE ›":"🔒 2 PLAYER PUZZLE";
+ $("finalStatus").innerHTML=all?"ALL PIECES COLLECTED.<br>最後のイベントが解放されました。":"5つのPieceがそろうと、<br>2人協力パズルが解放されます。";
+}
+$("startButton").onclick=()=>$("missions").scrollIntoView({behavior:"smooth"});
+$("closeModal").onclick=closeGame;
+$("closePuzzle").onclick=()=>$("puzzleModal").classList.add("hidden");
+$("finalOpen").onclick=openPuzzle;
+$("gameModal").addEventListener("click",e=>{if(e.target===$("gameModal"))closeGame()});
+$("puzzleModal").addEventListener("click",e=>{if(e.target===$("puzzleModal"))$("puzzleModal").classList.add("hidden")});
+function cleanupGame(){
+ if(raf)cancelAnimationFrame(raf);raf=null;
+ if(interval)clearInterval(interval);interval=null;
+}
+function closeGame(){cleanupGame();$("gameModal").classList.add("hidden");$("riddleArea").innerHTML="";activeGame=-1}
+function openGame(i){
+ cleanupGame();activeGame=i;
+ $("modalTitle").textContent=missions[i].game;
+ $("gameStatus").textContent="";
+ $("riddleArea").innerHTML="";
+ $("gameModal").classList.remove("hidden");
+ if(missions[i].kind==="timing")timingGame();
+ if(missions[i].kind==="shoot")shootGame();
+ if(missions[i].kind==="shuffle")shuffleGame();
+ if(missions[i].kind==="star")starGame();
+ if(missions[i].kind==="sync")syncGame();
+}
+function gameCleared(msg="GAME CLEAR ✨"){
+ cleanupGame();$("gameStatus").textContent=msg;
+ setTimeout(showRiddle,550);
+}
+function showRiddle(){
+ const i=activeGame,r=missions[i].riddle;
+ $("riddleArea").innerHTML=`<div class="riddle"><h4>${r.q}</h4><div class="options">${r.options.map((o,n)=>`<button data-opt="${n}">${o}</button>`).join("")}</div></div>`;
+ document.querySelectorAll("[data-opt]").forEach(b=>b.onclick=()=>{
+   if(+b.dataset.opt===r.answer){
+     state.pieces[i]=true;save();
+     b.textContent="正解 ✓";
+     $("gameStatus").textContent="MYSTERY PIECE GET 🧩";
+     toast(`PIECE ${i+1} / 5 GET!`);
+     setTimeout(()=>{closeGame();render()},900);
+   }else{
+     $("gameStatus").textContent="惜しい。もう一回！";
+   }
+ });
+}
+function timingGame(){
+ $("gameArea").innerHTML=`<div class="game-note">動くバーをピンクのゾーンで止めてください。</div><div class="timing-track"><div class="target-zone"></div><div class="marker" id="marker"></div></div><button class="primary" id="stopTiming">STOP</button>`;
+ let p=0,d=1,last=performance.now();
+ function step(now){
+   const dt=Math.min(32,now-last);last=now;p+=d*dt*.065;
+   if(p>=100){p=100;d=-1} if(p<=0){p=0;d=1}
+   $("marker").style.left=`calc(${p}% - 6px)`;raf=requestAnimationFrame(step);
+ }
+ raf=requestAnimationFrame(step);
+ $("stopTiming").onclick=()=>{
+   cleanupGame();
+   if(p>=42&&p<=58)gameCleared("PERFECT TIMING ✨");
+   else{$("gameStatus").textContent="惜しい！もう一回";setTimeout(timingGame,650)}
+ };
+}
+function shootGame(){
+ $("gameArea").innerHTML=`<div class="game-note">♡だけ3つ見つけてタップ。<br>魚は対象外です。笑</div><div class="shoot-field" id="shootField"></div>`;
+ let hearts=0,spawned=0;
+ const field=$("shootField");
+ function spawn(){
+   if(spawned>=12)return;spawned++;
+   const heart=Math.random()<.55;
+   const b=document.createElement("button");b.className="target";b.textContent=heart?"♡":["🐟","🌊","☀️"][Math.floor(Math.random()*3)];
+   b.style.left=(8+Math.random()*74)+"%";b.style.top=(25+Math.random()*58)+"%";
+   b.onclick=()=>{if(heart){hearts++;b.remove();$("gameStatus").textContent=`HEART ${hearts} / 3`;if(hearts>=3)gameCleared("HEART SHOOTING CLEAR ♡")}else{$("gameStatus").textContent="それは対象外です。笑";b.remove()}};
+   field.appendChild(b);setTimeout(()=>b.remove(),2200);
+ }
+ spawn();interval=setInterval(spawn,620);
+}
+function shuffleGame(){
+ const animals=["🐶","🦙","🦘"];
+ let correct=Math.floor(Math.random()*3);
+ $("gameArea").innerHTML=`<div class="game-note">サモエド（🐶）の場所を覚えてください。</div><div class="cards" id="shuffleCards">${animals.map((a,i)=>`<button class="shuffle-card" data-card="${i}">${a}</button>`).join("")}</div>`;
+ setTimeout(()=>{
+   const cards=[...document.querySelectorAll(".shuffle-card")];
+   cards.forEach(c=>{c.classList.add("covered");c.textContent=""});
+   let order=[0,1,2].sort(()=>Math.random()-.5);
+   const newCorrect=order.indexOf(correct);
+   $("shuffleCards").innerHTML=order.map((orig,pos)=>`<button class="shuffle-card covered" data-pos="${pos}"></button>`).join("");
+   document.querySelectorAll("[data-pos]").forEach(b=>b.onclick=()=>{
+     if(+b.dataset.pos===newCorrect){b.classList.remove("covered");b.textContent="🐶";gameCleared("サモエド発見 🐶")}
+     else{$("gameStatus").textContent="それはサモエドじゃない。笑";b.classList.remove("covered");b.textContent="🦙"}
+   });
+ },1200);
+}
+function starGame(){
+ $("gameArea").innerHTML=`<div class="game-note">落ちてくる星を3つ捕まえてください。</div><div class="star-field" id="starField"></div>`;
+ let count=0,spawned=0;
+ const field=$("starField");
+ function spawn(){
+   if(spawned++>11)return;
+   const s=document.createElement("button");s.className="star-btn";s.textContent=Math.random()<.78?"⭐":"♡";
+   s.style.left=(8+Math.random()*78)+"%";s.style.top="-40px";
+   let y=-40,vy=1.6+Math.random()*1.8;
+   s.onclick=()=>{count++;s.remove();$("gameStatus").textContent=`STAR ${count} / 3`;if(count>=3)gameCleared("STAR CATCH CLEAR ✨")};
+   field.appendChild(s);
+   function fall(){if(!s.isConnected)return;y+=vy;s.style.top=y+"px";if(y>245)s.remove();else requestAnimationFrame(fall)}
+   requestAnimationFrame(fall);
+ }
+ spawn();interval=setInterval(spawn,650);
+}
+function syncGame(){
+ $("gameArea").innerHTML=`<div class="game-note">2人で左右のボタンを押してください。<br>0.8秒以内ならSYNC成功。</div><div class="sync-wrap"><button class="sync-btn sync-a" id="syncA">TATSUKI</button><button class="sync-btn sync-b" id="syncB">TOMOKO</button></div>`;
+ let a=null,b=null;
+ function check(){
+   if(a&&b){
+     const diff=Math.abs(a-b);
+     if(diff<=800)gameCleared(`PERFECT SYNC ♡  ${Math.round(diff)}ms`);
+     else{$("gameStatus").textContent="惜しい！もう一回";a=b=null}
+   }
+ }
+ $("syncA").onclick=()=>{a=performance.now();$("syncA").textContent="READY ✓";check()};
+ $("syncB").onclick=()=>{b=performance.now();$("syncB").textContent="READY ✓";check()};
+}
+
+/* FINAL PUZZLE */
+function openPuzzle(){
+ selectedInv=null;
+ $("puzzleModal").classList.remove("hidden");
+ $("puzzleStage").innerHTML=`
+   <div class="puzzle-help">5つのPieceを正しい場所に入れてください。<br>Pieceを選んでから、同じ記号のSlotをタップ。</div>
+   <div class="puzzle-slots" id="slots">
+     ${missions.map((m,i)=>`<button class="slot" data-slot="${i}">${["◇","□","○","☆","♡"][i]} SLOT</button>`).join("")}
+   </div>
+   <div class="inventory" id="inventory">
+     ${missions.map((m,i)=>`<button class="inv-piece" data-inv="${i}">${m.piece}</button>`).join("")}
+   </div>
+   <div class="dual-final hidden" id="dualFinal">
+     <b>FINAL PIECE LOCK</b>
+     <div class="puzzle-help">最後だけ、2人でほぼ同時に押してください。</div>
+     <div class="dual-buttons"><button id="finalA">TATSUKI</button><button id="finalB">TOMOKO</button></div>
+   </div>`;
+ const filled=new Set();
+ document.querySelectorAll("[data-inv]").forEach(b=>b.onclick=()=>{
+   document.querySelectorAll("[data-inv]").forEach(x=>x.classList.remove("selected"));
+   selectedInv=+b.dataset.inv;b.classList.add("selected");
+ });
+ document.querySelectorAll("[data-slot]").forEach(s=>s.onclick=()=>{
+   const slot=+s.dataset.slot;if(selectedInv===null)return toast("先にPieceを選んでください");
+   if(slot!==selectedInv)return toast("そこじゃないみたい…");
+   if(filled.has(slot))return;
+   filled.add(slot);s.classList.add("filled");s.textContent=missions[slot].piece;
+   document.querySelector(`[data-inv="${slot}"]`).disabled=true;
+   document.querySelector(`[data-inv="${slot}"]`).classList.remove("selected");
+   selectedInv=null;
+   if(filled.size===4&&!filled.has(4)){
+      $("dualFinal").classList.remove("hidden");
+   }else if(filled.size===5){
+      showDecoder();
+   }
+ });
+ let ta=null,tb=null;
+ const bindFinal=()=>{
+   const a=$("finalA"),b=$("finalB"); if(!a||!b)return;
+   a.onclick=()=>{ta=performance.now();a.textContent="READY ✓";check()};
+   b.onclick=()=>{tb=performance.now();b.textContent="READY ✓";check()};
+   function check(){
+     if(ta&&tb){
+       if(Math.abs(ta-tb)<=1000){
+         const slot=document.querySelector('[data-slot="4"]');
+         slot.classList.add("filled");slot.textContent=missions[4].piece;
+         document.querySelector('[data-inv="4"]').disabled=true;
+         filled.add(4);toast("FINAL PIECE SET ✨");setTimeout(showDecoder,650);
+       }else{toast("惜しい、もう一回！");ta=tb=null;a.textContent="TATSUKI";b.textContent="TOMOKO"}
+     }
+   }
+ };
+ setTimeout(bindFinal,50);
+}
+function showDecoder(){
+ $("puzzleStage").innerHTML=`
+   <div class="decoder">
+     <h3>PUZZLE COMPLETE</h3>
+     <p class="puzzle-help">……でも、このパズルにはもう1つ秘密があります。</p>
+     <div class="hold-zone" id="holdZone">2本指で3秒長押し</div>
+     <button class="secondary" id="fallbackReveal">うまくいかない時はこちら</button>
+     <div id="messageArea"></div>
+   </div>`;
+ const zone=$("holdZone");let timer=null;
+ function start(e){
+   const touches=e.touches?.length||0;
+   if(touches>=2){e.preventDefault();zone.textContent="そのまま…";timer=setTimeout(revealFinal,3000)}
+ }
+ function stop(){clearTimeout(timer);timer=null;if(!$("messageArea").innerHTML)zone.textContent="2本指で3秒長押し"}
+ zone.addEventListener("touchstart",start,{passive:false});
+ zone.addEventListener("touchend",stop);
+ zone.addEventListener("touchcancel",stop);
+ $("fallbackReveal").onclick=revealFinal;
+}
+function revealFinal(){
+ const area=$("messageArea");if(area.innerHTML)return;
+ $("holdZone").classList.add("hidden");$("fallbackReveal").classList.add("hidden");
+ area.innerHTML=`
+   <div class="final-message">
+     ともちゃんのこと、<br>
+     <strong>やっぱり好きだなって、今日改めて思いました。</strong><br><br>
+     もっと一緒にいたいです。<br><br>
+     もし同じ気分なら、<br>
+     <strong>このあともう少しだけ、2人でゆっくりしない？</strong>
+   </div>
+   <div class="final-note">答えは画面じゃなくて、本人にお願いします。</div>`;
+ toast("THE LAST PIECE COMPLETE ♡");
+}
+
+render();
+</script>
+</body>
+</html>
