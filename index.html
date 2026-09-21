@@ -720,7 +720,7 @@ button:disabled{opacity:.46}
 </section>
 
 <footer class="footer">
-  09.22 THE LAST PIECE · MOBILE EXPERIENCE · v5
+  09.22 THE LAST PIECE · MOBILE EXPERIENCE · v6
   <br><button class="reset" id="resetBtn">進行状況をリセット</button>
 </footer>
 </main>
@@ -757,7 +757,7 @@ button:disabled{opacity:.46}
 
 <script>
 const $=id=>document.getElementById(id);
-const VERSION=5;
+const VERSION=6;
 const pieceData=[
   // Correct line chain is 2 → 0 → 4 → 1 → 3.
   // TATSUKI pieces are blue, TOMOKO pieces are pink, center piece is ivory/gold.
@@ -796,7 +796,7 @@ const missions=[
   time:"15:00頃",when:"動物を一通り見たあと",
   action:"相手に似ている動物を見つけて理由を伝え合う",
   note:"似ている理由まで伝える。かわいい理由ならBONUS。笑",
-  game:"REAL SHUFFLE",gameDesc:"4ROUND。カードが本当に何度も入れ替わります。サモエドを追え。",
+  game:"REAL SHUFFLE",gameDesc:"4ROUND。カードを覚えてから一拍置いてシャッフル。失敗しても同じROUNDからリトライ。",
   art:2,
   clue:{q:"ちなみに、今日ともちゃんの横にいる『サモエド』の出身地はどこ？",opts:["北海道","沖縄","ロシア"],answer:1,
     ok:"正解。沖縄生まれのサモエドです。🐶",bad:"違います。見た目に反して、かなり南の出身です。笑"}
@@ -825,12 +825,12 @@ const missions=[
 
 let state={actions:[false,false,false,false,false],pieces:[false,false,false,false,false],futureChoice:null};
 try{
-  const s=JSON.parse(localStorage.getItem("lastPieceV5")||"null");
+  const s=JSON.parse(localStorage.getItem("lastPieceV6")||"null");
   if(s?.actions?.length===5&&s?.pieces?.length===5)state=s;
 }catch(e){}
 let active=-1,cleanupFns=[],gameResolved=false;
 
-function save(){localStorage.setItem("lastPieceV5",JSON.stringify(state))}
+function save(){localStorage.setItem("lastPieceV6",JSON.stringify(state))}
 function countPieces(){return state.pieces.filter(Boolean).length}
 function toast(msg){
   const t=$("toast");t.textContent=msg;t.classList.add("show");
@@ -907,7 +907,7 @@ $("puzzleClose").onclick=()=>closePuzzle();
 $("finalBtn").onclick=openPuzzle;
 $("resetBtn").onclick=()=>{
  if(confirm("進行状況をリセットしますか？")){
-   localStorage.removeItem("lastPieceV5");location.reload();
+   localStorage.removeItem("lastPieceV6");location.reload();
  }
 };
 function addCleanup(fn){cleanupFns.push(fn)}
@@ -1038,9 +1038,11 @@ function shuffleGame(){
  const arcade=$("arcade");
  async function playRound(){
    const token=++runToken;
-   arcade.innerHTML=`<div class="hud"><span>ROUND ${round}/4</span><span>追跡対象：🐶</span></div><div class="shuffle-table" id="shuffleTable"></div><div class="shuffle-round" id="shuffleInfo">位置を覚えて…</div>`;
+   arcade.innerHTML=`<div class="hud"><span>ROUND ${round}/4</span><span>追跡対象：🐶</span></div><div class="shuffle-table" id="shuffleTable"></div><div class="shuffle-round" id="shuffleInfo">位置をしっかり覚えて…</div>`;
+   $("gameMessage").textContent="";
+   setControls("");
    const table=$("shuffleTable");
-   await sleep(50);
+   await sleep(80);
    const w=table.clientWidth,cardW=Math.min(68,(w-42)/4),gap=Math.max(8,(w-cardW*4)/5);
    const positions=[0,1,2,3].map(i=>gap+(cardW+gap)*i);
    let slotOf=[0,1,2,3];
@@ -1050,8 +1052,16 @@ function shuffleGame(){
      b.textContent=s;b.dataset.id=i;b.style.transform=`translateX(${positions[i]}px)`;
      table.appendChild(b);return b;
    });
-   await sleep(1300);if(token!==runToken)return;
-   cards.forEach(c=>c.classList.add("covered"));$("shuffleInfo").textContent="SHUFFLE START";
+
+   // 少し長めに見せて、位置を覚える余裕をつくる。
+   await sleep(1850);if(token!==runToken)return;
+   cards.forEach(c=>c.classList.add("covered"));
+   $("shuffleInfo").textContent="READY...";
+
+   // カードを伏せてから、さらに一拍置いてシャッフル開始。
+   await sleep(800);if(token!==runToken)return;
+   $("shuffleInfo").textContent="SHUFFLE START";
+
    const swaps=[8,10,12,14][round-1],delay=[430,360,300,255][round-1];
    for(let k=0;k<swaps;k++){
      let a=Math.floor(Math.random()*4),b=Math.floor(Math.random()*4);while(b===a)b=Math.floor(Math.random()*4);
@@ -1064,11 +1074,18 @@ function shuffleGame(){
    cards.forEach((c,cardId)=>c.onclick=()=>{
      if(cardId===0){
        cards.forEach(x=>{x.classList.remove("covered");x.onclick=null});
-       $("gameMessage").textContent="FOUND! 🐶";
-       setTimeout(()=>{if(round===4)clearGame("4ROUND COMPLETE 🐶");else{round++;$("gameMessage").textContent="";playRound()}},700);
+       $("gameMessage").textContent=`ROUND ${round} CLEAR! 🐶`;
+       setTimeout(()=>{
+         if(round===4)clearGame("4ROUND COMPLETE 🐶");
+         else{round++;$("gameMessage").textContent="";playRound()}
+       },850);
      }else{
        c.classList.remove("covered");c.textContent=symbols[cardId];cards.forEach(x=>x.onclick=null);
-       setTimeout(()=>failGame(`ROUND ${round} MISS — サモエドはそこじゃない。笑`),480);
+       setTimeout(()=>{
+         // このゲームだけはROUND 1へ戻さず、失敗した同じROUNDをそのまま再挑戦。
+         resultOverlay("failed",`ROUND ${round} MISS`,`サモエドはそこじゃない。今のROUNDだけ、もう一度。`,`ROUND ${round} RETRY ↻`,`shuffleRetryOverlay`);
+         $("shuffleRetryOverlay").onclick=()=>playRound();
+       },520);
      }
    });
  }
@@ -1382,7 +1399,7 @@ if(dbg){
 window.__LAST_PIECE_DEBUG__={
  version:VERSION,
  setAll(){state.actions=[1,1,1,1,1].map(Boolean);state.pieces=[1,1,1,1,1].map(Boolean);save();render()},
- reset(){localStorage.removeItem("lastPieceV5");location.reload()},
+ reset(){localStorage.removeItem("lastPieceV6");location.reload()},
  state
 };
 </script>
