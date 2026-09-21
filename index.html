@@ -599,15 +599,47 @@ button:disabled{opacity:.46}
 }
 
 
-.image-tile .tile-art{position:absolute;inset:0;display:block;background-image:url("final-art.svg");background-size:300% 300%;background-repeat:no-repeat}
 .image-tile small{pointer-events:none}
 .puzzle-buttons{display:grid;grid-template-columns:1fr .62fr;gap:8px;margin-top:10px}
 .puzzle-buttons .puzzle-check{margin-top:0}
 .puzzle-pass{border:1px solid rgba(71,91,114,.14);border-radius:999px;background:#f6f8fa;color:#607286;font-weight:900;font-size:10px}
 
+
+/* ===== v7 two-player game + puzzle fixes ===== */
+.duo-intro{position:absolute;inset:0;z-index:15;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:26px;background:linear-gradient(160deg,#eef8fd,#fff0f4)}
+.duo-intro-heart{font-size:54px;color:#dc7893;filter:drop-shadow(0 8px 18px rgba(213,105,137,.2));animation:duoPulse 1.2s ease-in-out infinite}
+.duo-intro strong{font-size:23px;line-height:1.35;color:#273e5a;margin-top:8px}.duo-intro p{font-size:12px;line-height:1.8;color:#65778a;margin:12px 0 17px}.duo-intro button{width:88%;padding:14px;border:0;border-radius:999px;background:#173452;color:#fff;font-weight:950}
+@keyframes duoPulse{50%{transform:scale(1.15)}}
+.dual-drop-v7{position:absolute;inset:42px 0 0;display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:15px 12px}
+.drop-lane-v7{display:flex;flex-direction:column;align-items:center;gap:7px}.drop-lane-v7>b{font-size:11px;letter-spacing:.08em;color:#596f84}.drop-lane-v7>small{min-height:17px;font-size:10px;font-weight:950;color:#c86780}
+.drop-track-v7{height:222px;width:68px;border-radius:34px;background:linear-gradient(180deg,#e5f3fa,#f9e8ee);position:relative;overflow:hidden;border:1px solid rgba(70,98,124,.12);box-shadow:inset 0 0 18px rgba(77,105,129,.06)}
+.drop-target-v7{position:absolute;left:6px;right:6px;height:15%;border-radius:18px;background:rgba(232,133,159,.30);border:2px solid rgba(207,102,130,.55)}
+.drop-light-v7{position:absolute;left:50%;top:-18px;width:19px;height:19px;border-radius:50%;transform:translateX(-50%)}
+.drop-light-v7.blue{background:#dff5ff;box-shadow:0 0 10px #75b8df,0 0 25px #74b9e5}.drop-light-v7.pink{background:#fff0f6;box-shadow:0 0 10px #ed8eaa,0 0 25px #ed91ae}
+.drop-lane-v7 button{width:100%;padding:14px 4px;border:0;border-radius:17px;color:#fff;font-weight:950;touch-action:manipulation;user-select:none}.drop-lane-v7:first-child button{background:linear-gradient(145deg,#6fa8cc,#4e7d9d)}.drop-lane-v7:last-child button{background:linear-gradient(145deg,#e59aad,#c86d86)}
+.puzzle-intro-v7{text-align:center;padding:7px 2px 3px}.puzzle-intro-v7 small{font-size:9px;letter-spacing:.17em;color:#a26c7d;font-weight:950}.puzzle-intro-v7 strong{display:block;font-family:Georgia,serif;font-size:23px;margin-top:7px}.puzzle-intro-v7 p{font-size:11px;line-height:1.75;color:#6b7988}.remember-art{width:min(78vw,300px);aspect-ratio:1;margin:15px auto 6px;border-radius:23px;overflow:hidden;box-shadow:0 16px 35px rgba(38,54,77,.15);border:5px solid #fff}.remember-art svg{width:100%;height:100%;display:block}.remember-count{font-family:Georgia,serif;font-size:36px;color:#d5748f;font-weight:900}
+.tile-puzzle{grid-template-columns:repeat(3,1fr)!important;gap:5px!important;padding:6px!important}.image-tile-v7{aspect-ratio:1;border:3px solid rgba(255,255,255,.9);border-radius:11px;padding:0;overflow:hidden;background:#fff;box-shadow:0 4px 10px rgba(0,0,0,.16);transition:.15s ease}.image-tile-v7.selected{outline:4px solid #ffd96f;transform:scale(.93)}.image-tile-v7 svg{width:100%;height:100%;display:block}.final-art-preview{width:min(70vw,260px)!important;height:auto!important;aspect-ratio:1;margin-top:11px!important;border:5px solid #fff}.final-art-preview svg{width:100%;height:100%;display:block}
+@media(max-width:340px){.drop-track-v7{height:195px;width:60px}.duo-intro strong{font-size:20px}}
+
 </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="finalArtworkSymbolV7" viewBox="0 0 300 300">
+ <defs><linearGradient id="v7Sky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#8fc8e7"/><stop offset=".48" stop-color="#eadce7"/><stop offset="1" stop-color="#293c59"/></linearGradient><linearGradient id="v7Sea" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#68a4bf"/><stop offset="1" stop-color="#315f7d"/></linearGradient></defs>
+ <rect width="300" height="300" fill="url(#v7Sky)"/><circle cx="243" cy="48" r="27" fill="#ffe0a0"/>
+ <path d="M0 126C67 112 117 129 176 110c48-14 85-4 124-13v114H0Z" fill="url(#v7Sea)"/>
+ <path d="M0 202c77-33 145-29 209-14 40 9 66 10 91 3v109H0Z" fill="#263951"/>
+ <path d="M-7 239c78-46 146-44 214-29 41 10 67 10 100 4" fill="none" stroke="#f5d59d" stroke-width="5" stroke-dasharray="15 10"/>
+ <g transform="translate(25 37)" fill="none" stroke="#fff8e5" stroke-width="4"><rect x="0" y="8" width="55" height="39" rx="7"/><circle cx="28" cy="27" r="11"/><path d="M9 8l7-9h21l7 9"/></g>
+ <path d="M108 48c12-18 29-18 41 0 12-18 29-18 41 0-2 27-41 47-41 47s-39-20-41-47Z" fill="none" stroke="#f7b2c4" stroke-width="4"/>
+ <g transform="translate(219 118)" fill="#f5e4d3"><circle cx="0" cy="0" r="7"/><circle cx="18" cy="-6" r="6"/><circle cx="33" cy="4" r="6"/><ellipse cx="17" cy="20" rx="16" ry="12"/></g>
+ <g transform="translate(36 205)" fill="none" stroke="#c9e4f3" stroke-width="4"><path d="M22 0C9 0 0 10 0 22c0 18 22 38 22 38s22-20 22-38C44 10 35 0 22 0Z"/><circle cx="22" cy="22" r="7"/></g>
+ <g transform="translate(202 210)" fill="none" stroke="#f4c4d1" stroke-width="4" stroke-linecap="round"><path d="M0 0l6 28q2 8 11 8t11-8L34 0M6 17h22M17 36v25M7 62h20M40 6l5 24q2 7 10 7t10-7L70 6M45 22h20M55 37v24M46 62h19"/></g>
+ <g transform="translate(110 212)"><rect x="0" y="18" width="57" height="18" rx="8" fill="#f7f0ea"/><path d="M10 18l10-11h22l10 11" fill="#e7cbd4"/><circle cx="14" cy="37" r="6" fill="#25374e"/><circle cx="45" cy="37" r="6" fill="#25374e"/></g>
+ <g fill="#fff" opacity=".9"><circle cx="31" cy="22" r="1.4"/><circle cx="84" cy="16" r="1"/><circle cx="137" cy="28" r="1.2"/><circle cx="188" cy="20" r="1.3"/><circle cx="272" cy="82" r="1.3"/></g>
+</symbol></defs></svg>
+
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
 <defs>
 <symbol id="finalArtworkSymbol" viewBox="0 0 300 300">
@@ -720,7 +752,7 @@ button:disabled{opacity:.46}
 </section>
 
 <footer class="footer">
-  09.22 THE LAST PIECE · MOBILE EXPERIENCE · v6
+  09.22 THE LAST PIECE · MOBILE EXPERIENCE · v7
   <br><button class="reset" id="resetBtn">進行状況をリセット</button>
 </footer>
 </main>
@@ -757,7 +789,7 @@ button:disabled{opacity:.46}
 
 <script>
 const $=id=>document.getElementById(id);
-const VERSION=6;
+const VERSION=7;
 const pieceData=[
   // Correct line chain is 2 → 0 → 4 → 1 → 3.
   // TATSUKI pieces are blue, TOMOKO pieces are pink, center piece is ivory/gold.
@@ -816,7 +848,7 @@ const missions=[
   time:"20:40頃",when:"夜ご飯が落ち着いたら",
   action:"今日いちばん好きだった時間を1つずつ伝え合う",
   note:"同じならすごい。違っても「良かった時間が2つあった」でCLEAR。",
-  game:"DUAL LIGHT DROP",gameDesc:"2人協力。左右の光をそれぞれ担当し、ターゲットで止める。10ROUND中7回成功でCLEAR。",
+  game:"DUAL LIGHT DROP",gameDesc:"これは2人専用。左はTATSUKI、右はTOMOKO。別々に流れる光を、自分のターゲットで止める。8ROUND中6回成功でCLEAR。",
   art:4,
   clue:{q:"今日の最後にいちばん大事なのは？",opts:["予定どおり全部こなす","Pieceを最速で集める","二人とも『来てよかった』と思える"],answer:2,
     ok:"正解。今日のゴールは、それだけです。",bad:"そこも大事。でも、今日の一番ではないです。"}
@@ -825,12 +857,12 @@ const missions=[
 
 let state={actions:[false,false,false,false,false],pieces:[false,false,false,false,false],futureChoice:null};
 try{
-  const s=JSON.parse(localStorage.getItem("lastPieceV6")||"null");
+  const s=JSON.parse(localStorage.getItem("lastPieceV7")||"null");
   if(s?.actions?.length===5&&s?.pieces?.length===5)state=s;
 }catch(e){}
 let active=-1,cleanupFns=[],gameResolved=false;
 
-function save(){localStorage.setItem("lastPieceV6",JSON.stringify(state))}
+function save(){localStorage.setItem("lastPieceV7",JSON.stringify(state))}
 function countPieces(){return state.pieces.filter(Boolean).length}
 function toast(msg){
   const t=$("toast");t.textContent=msg;t.classList.add("show");
@@ -907,7 +939,7 @@ $("puzzleClose").onclick=()=>closePuzzle();
 $("finalBtn").onclick=openPuzzle;
 $("resetBtn").onclick=()=>{
  if(confirm("進行状況をリセットしますか？")){
-   localStorage.removeItem("lastPieceV6");location.reload();
+   localStorage.removeItem("lastPieceV7");location.reload();
  }
 };
 function addCleanup(fn){cleanupFns.push(fn)}
@@ -1132,49 +1164,81 @@ function starCatchGame(){
  addCleanup(()=>{ended=true;cancelAnimationFrame(raf);clearInterval(timer);clearInterval(spawnTimer)});
 }
 
-/* DUAL LIGHT DROP — two lanes, tap when light enters target */
+/* DUAL LIGHT DROP — true two-player, independent lanes */
 function dualLightGame(){
- const arcade=$("arcade");let round=0,score=0,raf=0,token=0,current=null;
- arcade.innerHTML=`<div class="hud"><span>ROUND <b id="dlRound">0</b>/10</span><span>SYNC <b id="dlScore">0</b>/7</span></div>
- <div class="dual-drop">
-   <div class="drop-lane leftlane"><b>TATSUKI</b><div class="drop-track"><i class="drop-target"></i><i class="drop-light" id="lightA"></i></div><button id="tapA">TATSUKI TAP</button></div>
-   <div class="drop-lane rightlane"><b>TOMOKO</b><div class="drop-track"><i class="drop-target"></i><i class="drop-light" id="lightB"></i></div><button id="tapB">TOMOKO TAP</button></div>
- </div>`;
- let press={A:false,B:false};
- $("tapA").onclick=()=>tap("A");$("tapB").onclick=()=>tap("B");
- function next(){
-   if(round>=10){score>=7?clearGame(`${score}/10 SYNC`):failGame(`${score}/10 SYNC。7回成功でCLEAR。`);return}
-   round++;$("dlRound").textContent=round;press={A:false,B:false};
-   const both=round>=9,side=both?"AB":(round%2?"A":"B"),duration=Math.max(1150,1850-round*55);
-   current={side,start:performance.now(),duration,done:false};
-   $("gameMessage").textContent=both?"FINAL DUO — 2人とも狙って！":side==="A"?"TATSUKI ROUND":"TOMOKO ROUND";
+ const arcade=$("arcade");
+ let round=0,score=0,raf=0,current=null,started=false;
+ arcade.innerHTML=`<div class="duo-intro" id="duoIntro">
+   <div class="duo-intro-heart">♡</div>
+   <strong>これは2人でやってください！</strong>
+   <p>左はTATSUKI、右はTOMOKO。<br>それぞれ自分の光を見て、<b>ピンクのZONEに入った瞬間</b>に自分のボタンをタップ。<br>2人とも成功したROUNDだけSYNCになります。</p>
+   <button id="duoStart">2人とも準備OK ›</button>
+ </div>
+ <div id="dualGameBody" class="hidden"></div>`;
+ $("duoStart").onclick=()=>{started=true;$("duoIntro").classList.add("hidden");buildGame();setTimeout(nextRound,700)};
+ function buildGame(){
+   $("dualGameBody").innerHTML=`<div class="hud"><span>ROUND <b id="dlRound">0</b>/8</span><span>SYNC <b id="dlScore">0</b>/6</span></div>
+   <div class="dual-drop-v7">
+     <div class="drop-lane-v7"><b>TATSUKI</b><div class="drop-track-v7"><i class="drop-target-v7" id="targetA"></i><i class="drop-light-v7 blue" id="lightA"></i></div><button id="tapA">TATSUKI TAP</button><small id="judgeA">READY</small></div>
+     <div class="drop-lane-v7"><b>TOMOKO</b><div class="drop-track-v7"><i class="drop-target-v7" id="targetB"></i><i class="drop-light-v7 pink" id="lightB"></i></div><button id="tapB">TOMOKO TAP</button><small id="judgeB">READY</small></div>
+   </div>`;
+   $("tapA").addEventListener("pointerdown",e=>{e.preventDefault();judge("A")});
+   $("tapB").addEventListener("pointerdown",e=>{e.preventDefault();judge("B")});
+ }
+ function nextRound(){
+   if(round>=8){score>=6?clearGame(`${score}/8 SYNC`):failGame(`${score}/8 SYNC。6回成功でCLEAR。`);return}
+   round++;$("dlRound").textContent=round;
+   const ta=58+Math.random()*22,tb=58+Math.random()*22;
+   const durA=Math.max(1400,2350-round*75)+(Math.random()*250-125);
+   const durB=Math.max(1350,2250-round*68)+(Math.random()*300-150);
+   const delayA=Math.random()*260,delayB=180+Math.random()*380;
+   current={
+     start:performance.now(),done:false,
+     A:{target:ta,duration:durA,delay:delayA,tapped:false,good:false},
+     B:{target:tb,duration:durB,delay:delayB,tapped:false,good:false}
+   };
+   $("targetA").style.top=ta+"%";$("targetB").style.top=tb+"%";
+   $("lightA").style.top="-18px";$("lightB").style.top="-18px";
+   $("judgeA").textContent="READY";$("judgeB").textContent="READY";
+   $("gameMessage").textContent=`ROUND ${round} — 2人とも自分の光だけ見て！`;
    animate();
  }
- function animate(){
-   const c=current;if(!c||c.done)return;
-   const p=Math.min(1,(performance.now()-c.start)/c.duration),y=p*100;
-   if(c.side.includes("A"))$("lightA").style.top=`calc(${y}% - 9px)`;else $("lightA").style.top="-15px";
-   if(c.side.includes("B"))$("lightB").style.top=`calc(${y}% - 9px)`;else $("lightB").style.top="-15px";
-   if(p>=1){finishRound(false);return}
-   raf=requestAnimationFrame(animate);
+ function progress(side,now){
+   const c=current[side],elapsed=now-current.start-c.delay;
+   if(elapsed<=0)return 0;
+   return Math.min(1,elapsed/c.duration);
  }
- function tap(side){
-   const c=current;if(!c||c.done||!c.side.includes(side))return;
-   const p=(performance.now()-c.start)/c.duration;
-   const good=p>=.72&&p<=.86;
-   press[side]=good;
-   if(c.side==="AB"){
-     if(press.A&&press.B)finishRound(true);
-     else if(!good)finishRound(false);
-   }else finishRound(good);
+ function animate(now=performance.now()){
+   if(!current||current.done)return;
+   for(const side of ["A","B"]){
+     const p=progress(side,now),el=$(side==="A"?"lightA":"lightB");
+     el.style.top=`calc(${p*100}% - 9px)`;
+   }
+   const pa=progress("A",now),pb=progress("B",now);
+   if((pa>=1&&!current.A.tapped)||(pb>=1&&!current.B.tapped)){
+     if(pa>=1&&!current.A.tapped){current.A.tapped=true;current.A.good=false;$("judgeA").textContent="MISS"}
+     if(pb>=1&&!current.B.tapped){current.B.tapped=true;current.B.good=false;$("judgeB").textContent="MISS"}
+     checkRound();
+   }
+   if(!current.done)raf=requestAnimationFrame(animate);
  }
- function finishRound(ok){
-   if(!current||current.done)return;current.done=true;cancelAnimationFrame(raf);
-   if(ok){score++;$("dlScore").textContent=score;$("gameMessage").textContent="PERFECT SYNC ♥"}
-   else $("gameMessage").textContent="MISS";
-   setTimeout(next,520);
+ function judge(side){
+   if(!current||current.done||current[side].tapped)return;
+   const p=progress(side,performance.now()),c=current[side];
+   c.tapped=true;
+   const half=7.5; c.good=(p*100>=c.target-half&&p*100<=c.target+half);
+   $(side==="A"?"judgeA":"judgeB").textContent=c.good?"PERFECT ♥":"MISS";
+   checkRound();
  }
- setTimeout(next,700);addCleanup(()=>{token++;cancelAnimationFrame(raf);current=null});
+ function checkRound(){
+   if(!current.A.tapped||!current.B.tapped)return;
+   current.done=true;cancelAnimationFrame(raf);
+   const ok=current.A.good&&current.B.good;
+   if(ok){score++;$("dlScore").textContent=score;$("gameMessage").textContent="PERFECT SYNC ♥ 2人とも成功！"}
+   else $("gameMessage").textContent="惜しい！ 次のROUNDへ";
+   setTimeout(nextRound,780);
+ }
+ addCleanup(()=>{cancelAnimationFrame(raf);current=null});
 }
 
 /* SECRET CLUE */
@@ -1198,77 +1262,56 @@ function unlockPiece(){
  $("pieceDone").onclick=()=>{closeGame();$("arcade").classList.remove("hidden");$("gameInstruction").classList.remove("hidden");render();toast(`PIECE ${i+1}/5 GET ✨`)};
 }
 
-/* FINAL PUZZLE — 3×3 romantic image shuffle, tap-to-swap */
-function finalArtworkMarkup(){
- return `
-  <defs>
-    <linearGradient id="faSkyInline" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#8fc8e6"/><stop offset=".48" stop-color="#eadde8"/><stop offset="1" stop-color="#293b58"/></linearGradient>
-    <linearGradient id="faSeaInline" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#65a1bd"/><stop offset="1" stop-color="#315f7d"/></linearGradient>
-  </defs>
-  <rect width="300" height="300" fill="url(#faSkyInline)"/>
-  <circle cx="242" cy="48" r="27" fill="#ffe0a0"/>
-  <path d="M0 126 C70 112 118 128 176 110 C224 96 260 106 300 97 V211 H0Z" fill="url(#faSeaInline)"/>
-  <path d="M0 201 C77 169 146 173 210 188 C249 197 275 198 300 191 V300 H0Z" fill="#263951"/>
-  <path d="M-7 239 C71 193 139 195 207 210 C248 220 274 220 307 214" fill="none" stroke="#f5d59d" stroke-width="5" stroke-dasharray="15 10"/>
-  <g transform="translate(25 38)" fill="none" stroke="#fff8e5" stroke-width="4" stroke-linejoin="round"><rect x="0" y="8" width="55" height="39" rx="7"/><circle cx="28" cy="27" r="11"/><path d="M9 8l7-9h21l7 9"/></g>
-  <path d="M110 49c11-17 28-17 39 0 11-17 28-17 39 0-2 26-39 45-39 45s-37-19-39-45Z" fill="none" stroke="#f7b2c4" stroke-width="4"/>
-  <g transform="translate(220 119)" fill="#f6e4d3"><circle cx="0" cy="0" r="7"/><circle cx="18" cy="-6" r="6"/><circle cx="33" cy="4" r="6"/><ellipse cx="17" cy="20" rx="16" ry="12"/></g>
-  <g transform="translate(36 205)" fill="none" stroke="#c9e4f3" stroke-width="4"><path d="M22 0C9 0 0 10 0 22c0 18 22 38 22 38s22-20 22-38C44 10 35 0 22 0Z"/><circle cx="22" cy="22" r="7"/></g>
-  <g transform="translate(202 210)" fill="none" stroke="#f4c4d1" stroke-width="4" stroke-linecap="round"><path d="M0 0l6 28q2 8 11 8t11-8L34 0"/><path d="M6 17h22M17 36v25M7 62h20"/><path d="M40 6l5 24q2 7 10 7t10-7L70 6"/><path d="M45 22h20M55 37v24M46 62h19"/></g>
-  <g fill="#fff" opacity=".9"><circle cx="31" cy="22" r="1.4"/><circle cx="84" cy="16" r="1"/><circle cx="137" cy="28" r="1.2"/><circle cx="188" cy="20" r="1.3"/><circle cx="272" cy="82" r="1.3"/></g>`;
+/* FINAL PUZZLE — clear 3×3 two-player picture puzzle */
+function finalArtworkSVG(){
+ return `<svg class="full-art" viewBox="0 0 300 300" aria-label="完成イメージ"><use href="#finalArtworkSymbolV7"/></svg>`;
 }
 function openPuzzle(){
  $("puzzleModal").classList.remove("hidden");$("puzzleHead").classList.remove("hidden");
- const order=[4,0,8,2,6,1,7,3,5];
- let turn="TATSUKI",selected=null,moves=0,hintShown=false;
- $("puzzleContent").innerHTML=`<div class="puzzle-help"><b>2人協力ルール</b><br>9枚の絵を並べ替えて「今日の1枚」を完成させます。<br><b>青枠はTATSUKI、ピンク枠はTOMOKO。</b> 自分の色のPieceを1枚選び、入れ替えたい場所をタップ。交互に進めます。</div>
- <div class="final-art-preview hidden" id="finalArtPreview">${finalArtworkSVG()}</div>
- <div class="tile-puzzle" id="tilePuzzle"></div>
- <div class="turn-panel"><b id="turnLabel">TATSUKI TURN</b><span>MOVE <i id="moveCount">0</i></span></div>
- <div class="puzzle-status" id="puzzleStatus">絵のつながりを見て並べよう。迷ったら完成イメージを2秒だけ見られます。</div>
- <div class="puzzle-buttons"><button class="puzzle-check" id="showHint">HINT：完成イメージを2秒見る</button><button class="puzzle-pass" id="passTurn">PASS TURN</button></div>`;
- function ownerFor(tile){return tile===4?"TOGETHER":tile%2===0?"TATSUKI":"TOMOKO"}
+ const solved=[0,1,2,3,4,5,6,7,8];
+ let order=[4,0,8,2,6,1,7,3,5],turn="TATSUKI",selected=null,moves=0,previewing=true;
+ $("puzzleContent").innerHTML=`<div class="puzzle-intro-v7" id="puzzleIntroV7">
+   <small>FINAL CO-OP GAME</small><strong>まず、この絵を覚えてください</strong>
+   <p>このあと9枚にバラバラになります。<br>2人で交互に1手ずつ入れ替えて、同じ絵を完成させます。</p>
+   <div class="remember-art">${finalArtworkSVG()}</div><div class="remember-count" id="rememberCount">4</div>
+ </div>
+ <div id="puzzlePlayV7" class="hidden">
+   <div class="puzzle-help"><b>遊び方</b><br><b id="turnInstruction">TATSUKIの番</b>です。入れ替えたいPieceを2枚、順番にタップしてください。入れ替わったらTOMOKOの番になります。</div>
+   <div class="tile-puzzle" id="tilePuzzle"></div>
+   <div class="turn-panel"><b id="turnLabel">TATSUKI TURN</b><span>MOVE <i id="moveCount">0</i></span></div>
+   <div class="puzzle-status" id="puzzleStatus">海・道路・ハート・動物・ワイングラスの位置を見比べてみて。</div>
+   <button class="puzzle-check" id="showHint">完成イメージを3秒見る</button>
+   <div class="final-art-preview hidden" id="finalArtPreview">${finalArtworkSVG()}</div>
+ </div>`;
+ let sec=4;const ct=$("rememberCount");
+ const t=setInterval(()=>{sec--;if(ct)ct.textContent=sec;if(sec<=0){clearInterval(t);$("puzzleIntroV7").classList.add("hidden");$("puzzlePlayV7").classList.remove("hidden");draw()}},1000);
+ addCleanup(()=>clearInterval(t));
  function tileHTML(tile,pos){
-   const r=Math.floor(tile/3),c=tile%3,owner=ownerFor(tile),cls=owner==="TATSUKI"?"blue":owner==="TOMOKO"?"pink":"gold";
-   const px=[0,50,100][c],py=[0,50,100][r];
-   return `<button class="image-tile ${cls}" data-tile="${tile}" data-pos="${pos}">
-     <span class="tile-art" style="background-position:${px}% ${py}%"></span>
-     <small>${owner}</small>
-   </button>`;
+   const r=Math.floor(tile/3),c=tile%3;
+   return `<button class="image-tile-v7" data-pos="${pos}" data-tile="${tile}"><svg viewBox="${c*100} ${r*100} 100 100" preserveAspectRatio="xMidYMid slice"><use href="#finalArtworkSymbolV7"/></svg></button>`;
  }
  function draw(){
    $("tilePuzzle").innerHTML=order.map((t,i)=>tileHTML(t,i)).join("");
-   $("turnLabel").textContent=`${turn} TURN`;
-   $("moveCount").textContent=moves;
-   document.querySelectorAll(".image-tile").forEach(btn=>btn.onclick=()=>{
-     const pos=+btn.dataset.pos,tile=order[pos],owner=ownerFor(tile);
-     if(selected===null){
-       if(owner!==turn&&owner!=="TOGETHER"){toast(`${turn}のPieceを選んでね`);return}
-       selected=pos;btn.classList.add("selected");return;
-     }
+   $("turnLabel").textContent=`${turn} TURN`;$("turnInstruction").textContent=`${turn}の番`;$("moveCount").textContent=moves;
+   document.querySelectorAll(".image-tile-v7").forEach(btn=>btn.onclick=()=>{
+     const pos=+btn.dataset.pos;
+     if(selected===null){selected=pos;btn.classList.add("selected");return}
      if(selected===pos){selected=null;draw();return}
-     [order[selected],order[pos]]=[order[pos],order[selected]];
-     selected=null;moves++;turn=turn==="TATSUKI"?"TOMOKO":"TATSUKI";draw();
-     if(order.every((v,i)=>v===i)){
+     [order[selected],order[pos]]=[order[pos],order[selected]];selected=null;moves++;turn=turn==="TATSUKI"?"TOMOKO":"TATSUKI";draw();
+     if(order.every((v,i)=>v===solved[i])){
        $("puzzleStatus").textContent="PUZZLE COMPLETE! おめでとう ✨";
-       document.querySelectorAll(".image-tile").forEach(x=>x.disabled=true);
+       document.querySelectorAll(".image-tile-v7").forEach(x=>x.disabled=true);
        setTimeout(showTouchScene,1200);
      }
    });
  }
- draw();
- $("passTurn").onclick=()=>{turn=turn==="TATSUKI"?"TOMOKO":"TATSUKI";selected=null;draw();toast("TURN CHANGE");};
  $("showHint").onclick=()=>{
-   if(hintShown)return;hintShown=true;
-   const p=$("finalArtPreview");p.classList.remove("hidden");
-   setTimeout(()=>{p.classList.add("hidden");hintShown=false},2000);
+   const p=$("finalArtPreview");p.classList.remove("hidden");$("showHint").disabled=true;
+   setTimeout(()=>{p.classList.add("hidden");$("showHint").disabled=false},3000);
  };
 }
-function finalArtworkSVG(){
- return `<img class="full-art" src="final-art.svg" alt="完成イメージ">`;
-}
 function closePuzzle(){
- $("puzzleModal").classList.add("hidden");$("fullHeart").classList.add("hidden","grow");
+ $("puzzleModal").classList.add("hidden");$("fullHeart").classList.add("hidden","grow");cleanup();
 }
 function showTouchScene(){
  $("puzzleHead").classList.add("hidden");
@@ -1399,7 +1442,7 @@ if(dbg){
 window.__LAST_PIECE_DEBUG__={
  version:VERSION,
  setAll(){state.actions=[1,1,1,1,1].map(Boolean);state.pieces=[1,1,1,1,1].map(Boolean);save();render()},
- reset(){localStorage.removeItem("lastPieceV6");location.reload()},
+ reset(){localStorage.removeItem("lastPieceV7");location.reload()},
  state
 };
 </script>
