@@ -532,42 +532,162 @@ button:disabled{opacity:.46}
 @media(prefers-reduced-motion:reduce){
   .petal{animation-duration:28s}
 }
+
+/* ===== v4 mobile-first QA/UI ===== */
+.hero-scene-v4{background:none!important}
+.reminder-add{
+ width:100%;margin-top:14px;padding:12px 14px;border:1px solid rgba(66,87,109,.13);border-radius:16px;
+ background:rgba(255,255,255,.76);color:#50657b;font-weight:900;font-size:12px
+}
+.reminder-note{margin-top:7px;color:#7d8995;font-size:9px;line-height:1.55}
+.mission-reminder{
+ position:fixed;z-index:120;left:10px;right:10px;top:calc(10px + env(safe-area-inset-top));
+ max-width:460px;margin:auto;border-radius:18px;padding:12px 42px 12px 14px;background:#fff8e8;
+ border:1px solid #efd7a9;box-shadow:0 18px 45px rgba(55,44,27,.18);display:flex;align-items:center;gap:10px
+}
+.mission-reminder div{flex:1;min-width:0}.mission-reminder small{display:block;color:#aa7d43;font-size:8px;font-weight:950;letter-spacing:.14em}
+.mission-reminder b{display:block;font-size:11px;line-height:1.45;margin-top:3px}
+.mission-reminder>button:not(.reminderClose){border:0;border-radius:999px;background:#173554;color:#fff;padding:8px 11px;font-size:10px;font-weight:900}
+.reminderClose{position:absolute;right:8px;top:8px;border:0;background:transparent;color:#9d8a72;font-size:18px}
+.mission-time{
+ display:flex;align-items:center;gap:9px;margin:-3px 0 12px;padding:9px 11px;border-radius:15px;
+ background:linear-gradient(135deg,#eef7fc,#fff1f4);border:1px solid rgba(93,126,151,.10)
+}
+.mission-time b{font-family:Georgia,serif;font-size:16px;color:#456c88;white-space:nowrap}
+.mission-time span{font-size:10px;line-height:1.4;color:#778695;font-weight:850}
+.real-text{font-size:16px!important;letter-spacing:.01em}
+.surprise-lock{min-height:68px!important;font-size:12px!important;background:linear-gradient(135deg,#f8fafb,#f3f6f8)!important}
+.result-overlay{
+ position:absolute;inset:0;z-index:30;display:flex;flex-direction:column;align-items:center;justify-content:center;
+ text-align:center;padding:24px;background:rgba(255,253,250,.96);backdrop-filter:blur(6px)
+}
+.result-overlay .result-spark{font-size:46px;animation:clearPop .7s ease both}
+.result-overlay strong{font-family:Georgia,serif;font-size:28px;letter-spacing:.08em;margin-top:7px}
+.result-overlay span{font-size:12px;line-height:1.7;color:#718090;margin-top:8px}
+.result-overlay button{margin-top:18px;width:80%;padding:13px;border:0;border-radius:999px;font-weight:950}
+.result-overlay.cleared strong{color:#c5657e}.result-overlay.cleared button{background:#df849c;color:#fff}
+.result-overlay.failed strong{color:#52687e}.result-overlay.failed button{background:#173554;color:#fff}
+@keyframes clearPop{0%{transform:scale(.4) rotate(-20deg);opacity:0}70%{transform:scale(1.2)}100%{transform:scale(1);opacity:1}}
+.shoot-field{position:absolute;inset:42px 0 0;overflow:hidden}
+.shuffle-table{left:0!important;right:0!important;width:100%!important;overflow:visible}
+.shuffle-card{left:0!important}
+.dual-drop{position:absolute;inset:42px 0 0;display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:18px 14px}
+.drop-lane{display:flex;flex-direction:column;align-items:center;gap:9px}
+.drop-lane>b{font-size:10px;letter-spacing:.09em;color:#62788e}
+.drop-track{height:220px;width:58px;border-radius:30px;background:linear-gradient(180deg,#e5f2f9,#f8e9ee);position:relative;overflow:hidden;border:1px solid rgba(74,99,124,.10)}
+.drop-target{position:absolute;left:5px;right:5px;top:72%;height:14%;border-radius:15px;background:rgba(233,132,157,.36);border:2px solid rgba(211,101,129,.55)}
+.drop-light{position:absolute;left:50%;top:-15px;width:18px;height:18px;border-radius:50%;transform:translateX(-50%);background:#fff2a4;box-shadow:0 0 18px #f5b7ce,0 0 28px #fff}
+.drop-lane button{width:100%;padding:13px 4px;border:0;border-radius:16px;color:#fff;font-weight:950;font-size:11px}
+.leftlane button{background:linear-gradient(145deg,#6fa4c6,#4f7f9f)}
+.rightlane button{background:linear-gradient(145deg,#e295aa,#c76d86)}
+.final-art-preview{margin:13px auto;width:180px;height:180px;border-radius:20px;overflow:hidden;box-shadow:0 12px 28px rgba(35,52,74,.16)}
+.full-art{width:100%;height:100%;display:block}
+.tile-puzzle{margin-top:14px;display:grid;grid-template-columns:repeat(3,1fr);gap:5px;padding:7px;border-radius:22px;background:#142d51}
+.image-tile{aspect-ratio:1;height:clamp(88px,28vw,132px);border:3px solid transparent;border-radius:12px;padding:0;overflow:hidden;background:#fff;position:relative;box-shadow:0 4px 10px rgba(0,0,0,.15)}
+.image-tile.blue{border-color:#7db6d8}.image-tile.pink{border-color:#e899ad}.image-tile.gold{border-color:#e0be78}
+.image-tile.selected{outline:4px solid #fff1a9;transform:scale(.95)}
+.image-tile svg{width:100%;height:100%;display:block}.image-tile small{position:absolute;left:3px;right:3px;bottom:3px;background:rgba(255,255,255,.72);border-radius:999px;padding:2px;color:#53677c;font-size:6px;font-weight:950}
+.turn-panel{display:flex;justify-content:space-between;margin-top:10px;padding:9px 12px;border-radius:14px;background:#eef4f8;color:#536a7f;font-size:10px}
+.turn-panel b{color:#c3667f}.turn-panel i{font-style:normal;font-weight:950}
+.finger-pad.left,.finger-pad.right{border-radius:90px 26px 26px 90px!important}
+.finger-pad.right{border-radius:26px 90px 90px 26px!important}
+.fingerprint{width:105px!important;height:145px!important}
+.full-heart-shape{font-size:min(170vw,860px)!important}
+@media(max-width:340px){
+ .mission-time{align-items:flex-start}.mission-time b{font-size:14px}.real-text{font-size:14px!important}
+ .drop-track{height:195px}
+}
+
+
+.image-tile .tile-art{position:absolute;inset:0;display:block;background-image:url("final-art.svg");background-size:300% 300%;background-repeat:no-repeat}
+.image-tile small{pointer-events:none}
+.puzzle-buttons{display:grid;grid-template-columns:1fr .62fr;gap:8px;margin-top:10px}
+.puzzle-buttons .puzzle-check{margin-top:0}
+.puzzle-pass{border:1px solid rgba(71,91,114,.14);border-radius:999px;background:#f6f8fa;color:#607286;font-weight:900;font-size:10px}
+
 </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<defs>
+<symbol id="finalArtworkSymbol" viewBox="0 0 300 300">
+  <defs>
+    <linearGradient id="faSky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#90c9e7"/><stop offset=".48" stop-color="#e8dce8"/><stop offset="1" stop-color="#263855"/></linearGradient>
+    <linearGradient id="faSea" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#5c9bb8"/><stop offset="1" stop-color="#315f7c"/></linearGradient>
+  </defs>
+  <rect width="300" height="300" fill="url(#faSky)"/>
+  <circle cx="238" cy="50" r="27" fill="#ffe0a0"/>
+  <path d="M0 128 C70 113 111 127 171 110 C220 97 258 107 300 99 V211 H0Z" fill="url(#faSea)"/>
+  <path d="M0 202 C77 169 145 174 207 188 C250 198 272 198 300 192 V300 H0Z" fill="#24374f"/>
+  <path d="M-6 239 C69 193 137 194 206 210 C245 219 270 220 306 214" fill="none" stroke="#f5d59d" stroke-width="5" stroke-dasharray="15 10"/>
+  <g transform="translate(32 49)" fill="none" stroke="#fff7df" stroke-width="4" opacity=".85">
+    <path d="M0 25c15-25 37-25 52 0 15-25 37-25 52 0-2 30-52 53-52 53S2 55 0 25Z"/>
+  </g>
+  <g transform="translate(188 192)">
+    <circle cx="18" cy="18" r="10" fill="#f1cfb0"/><circle cx="45" cy="18" r="10" fill="#f1cfb0"/>
+    <path d="M11 18h14M38 18h14M18 28v28M45 28v28" stroke="#f1cfb0" stroke-width="4" stroke-linecap="round"/>
+  </g>
+  <g transform="translate(230 120)" fill="#f5e3cf"><circle cx="0" cy="0" r="6"/><circle cx="16" cy="-5" r="5"/><circle cx="28" cy="4" r="5"/><ellipse cx="15" cy="16" rx="14" ry="11"/></g>
+  <g transform="translate(38 230)" stroke="#f3c0cf" fill="none" stroke-width="3"><path d="M0 20h38"/><path d="M8 20 19 0 30 20"/></g>
+  <g fill="#fff" opacity=".9"><circle cx="35" cy="25" r="1.4"/><circle cx="72" cy="17" r="1"/><circle cx="135" cy="32" r="1.2"/><circle cx="184" cy="21" r="1.3"/><circle cx="270" cy="79" r="1.3"/></g>
+</symbol>
+</defs></svg>
+
 <div class="romantic-bg"><div class="bg-day" id="bgDay"></div><div class="bg-night" id="bgNight"></div><div class="bg-glow"></div><div class="bg-stars" id="bgStars"></div></div>
 <div class="petals" aria-hidden="true"><i class="petal"></i><i class="petal"></i><i class="petal"></i><i class="petal"></i><i class="petal"></i></div>
 
-<main class="app">
+<div class="mission-reminder hidden" id="missionReminder">
+      <div><small>MISSION REMINDER</small><b id="reminderText"></b></div>
+      <button id="reminderJump">見る</button>
+      <button class="reminderClose" id="reminderClose">×</button>
+    </div>
+    <main class="app">
 <section class="hero">
   <div class="hero-card">
     <div class="date">09.22</div>
     <h1>THE LAST PIECE</h1>
     <p class="hero-copy">今日は、5つの出来事をクリアするたびに<br>“Piece”がひとつずつ増えていきます。<br><b>最後に何が完成するかは秘密。</b></p>
-    <div class="hero-scene">
+    <div class="hero-scene hero-scene-v4">
       <svg viewBox="0 0 420 190" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
         <defs>
-          <linearGradient id="skyG" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#89c8e7"/><stop offset=".52" stop-color="#d9edf6"/><stop offset="1" stop-color="#f0b9bc"/></linearGradient>
-          <linearGradient id="roadG" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#61758b"/><stop offset="1" stop-color="#28384b"/></linearGradient>
+          <linearGradient id="v4Sky" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#8fc9e7"/>
+            <stop offset=".52" stop-color="#d9eff8"/>
+            <stop offset="1" stop-color="#f5c7c2"/>
+          </linearGradient>
+          <linearGradient id="v4Sea" x1="0" y1="0" x2="0" y2="1">
+            <stop stop-color="#75acc7"/><stop offset="1" stop-color="#3f718e"/>
+          </linearGradient>
+          <linearGradient id="v4Road" x1="0" y1="0" x2="0" y2="1">
+            <stop stop-color="#5f7086"/><stop offset="1" stop-color="#24354d"/>
+          </linearGradient>
         </defs>
-        <rect width="420" height="190" fill="url(#skyG)"/>
-        <circle cx="338" cy="38" r="25" fill="#ffe1a3" opacity=".9"/>
-        <path d="M0 105 C85 92 128 110 197 96 C260 84 308 98 420 83 V190 H0Z" fill="#77a8be"/>
-        <path d="M0 130 C90 122 173 138 245 124 C320 110 363 120 420 111 V190 H0Z" fill="#4e7f98"/>
-        <path d="M0 164 C102 132 175 127 238 133 C306 139 353 156 420 145 V190 H0Z" fill="url(#roadG)"/>
-        <path d="M30 180 C130 145 216 145 382 158" fill="none" stroke="#f4e0a3" stroke-width="3" stroke-dasharray="14 12"/>
-        <!-- couple silhouettes -->
-        <circle cx="318" cy="125" r="13" fill="#314051"/>
-        <path d="M300 170 Q302 139 317 137 Q336 138 339 170Z" fill="#314051"/>
-        <circle cx="344" cy="128" r="12" fill="#775866"/>
-        <path d="M330 171 Q331 143 345 141 Q360 142 364 171Z" fill="#775866"/>
-        <path d="M326 143 Q339 135 351 145" fill="none" stroke="#e9c6d2" stroke-width="5" stroke-linecap="round"/>
+        <rect width="420" height="190" fill="url(#v4Sky)"/>
+        <circle cx="330" cy="42" r="24" fill="#ffe0a0"/>
+        <path d="M0 102 C80 88 157 103 226 89 C290 76 347 84 420 74 V190 H0Z" fill="#8bb7c9" opacity=".72"/>
+        <path d="M0 123 C86 113 152 126 225 110 C288 96 352 104 420 95 V190 H0Z" fill="url(#v4Sea)"/>
+        <path d="M0 163 C88 137 176 132 248 139 C319 146 366 160 420 150 V190 H0Z" fill="url(#v4Road)"/>
+        <path d="M24 183 C119 150 205 149 386 163" fill="none" stroke="#f8dda0" stroke-width="3" stroke-dasharray="14 11"/>
+        <path d="M54 139 Q82 116 109 129" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" opacity=".55"/>
+        <path d="M72 145 Q100 123 127 136" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" opacity=".35"/>
+        <g transform="translate(285 126)">
+          <rect x="0" y="18" width="54" height="17" rx="7" fill="#f7f0ea"/>
+          <path d="M10 18 19 8h21l9 10" fill="#e6cbd4"/>
+          <circle cx="13" cy="36" r="6" fill="#25374e"/><circle cx="43" cy="36" r="6" fill="#25374e"/>
+          <circle cx="13" cy="36" r="2.4" fill="#a9bac7"/><circle cx="43" cy="36" r="2.4" fill="#a9bac7"/>
+        </g>
+        <g fill="#fff" opacity=".9">
+          <circle cx="60" cy="32" r="1.6"/><circle cx="90" cy="23" r="1.2"/><circle cx="250" cy="37" r="1.4"/>
+        </g>
+        <path d="M354 111c8-12 22-12 30 0 8-12 22-12 30 0-1 17-30 31-30 31s-29-14-30-31Z" fill="#f0a3b7" opacity=".76"/>
       </svg>
     </div>
     <div class="piece-progress" id="heroPieces"></div>
     <div class="progress-label" id="progressLabel">PIECE 0 / 5</div>
     <button class="hero-button" id="startBtn">START ›</button>
     <div class="hero-secret">その日の最後まで、答えは見せません。</div>
+    <button class="reminder-add" id="calendarBtn">🔔 当日のMISSIONリマインダーを追加</button>
+    <div class="reminder-note">各MISSIONの5分前にカレンダー通知できるようにします。</div>
   </div>
 </section>
 
@@ -600,7 +720,7 @@ button:disabled{opacity:.46}
 </section>
 
 <footer class="footer">
-  09.22 THE LAST PIECE · MOBILE EXPERIENCE · v3
+  09.22 THE LAST PIECE · MOBILE EXPERIENCE · v5
   <br><button class="reset" id="resetBtn">進行状況をリセット</button>
 </footer>
 </main>
@@ -637,7 +757,7 @@ button:disabled{opacity:.46}
 
 <script>
 const $=id=>document.getElementById(id);
-const VERSION=3;
+const VERSION=5;
 const pieceData=[
   // Correct line chain is 2 → 0 → 4 → 1 → 3.
   // TATSUKI pieces are blue, TOMOKO pieces are pink, center piece is ivory/gold.
@@ -653,59 +773,64 @@ const puzzleOrder=[2,0,4,1,3];
 const missions=[
 {
   key:"drive",title:"DRIVE START",subtitle:"MEET & DRIVE",
-  action:"今日最初の写真を、1枚だけ残す",
-  note:"二人じゃなくてもOK。空でも、車でも、景色でも。",
-  game:"TIMING RUSH",gameDesc:"5ROUND。だんだん速く・狭くなるゲートを4回突破。",
+  time:"11:30頃",when:"海へ向かう途中",
+  action:"二人で仲良さそうな写真を撮る",
+  note:"自撮りでも誰かにお願いしてもOK。今日最初の「二人の写真」を残す。",
+  game:"TIMING RUSH",gameDesc:"7ROUND。スピードアップするゲートを5回突破。",
   art:0,
-  clue:{q:"今日、渋滞しても増えるほど嬉しいものは？",opts:["走行距離","話している時間","ガソリン代"],answer:1,
-    ok:"正解。渋滞しても、話す時間が増えるなら悪くない。笑",bad:"それが増えるのはあまり嬉しくない。笑"}
+  clue:{q:"今日の運転手が最近通っている習い事は？",opts:["テニス","ゴルフ","社交ダンス"],answer:0,
+    ok:"正解。運転だけじゃなく、最近はテニスもしています。笑",bad:"惜しい。そこはまだ始めていません。笑"}
 },
 {
   key:"lunch",title:"SANGA LUNCH",subtitle:"SEA SIDE",
-  action:"今日のランチで、一番おいしかったものを1つずつ決める",
-  note:"同じでも違ってもCLEAR。理由まで聞けたらなお良し。",
-  game:"HEART SHOOTING",gameDesc:"25秒。動く♡を12個撃つ。ハズレ3回でGAME OVER。",
+  time:"13:20頃",when:"料理がそろったら",
+  action:"お互いに一口ずつ「あーん」で食べさせ合う",
+  note:"ちょっと照れてもCLEAR。今日いちばんデートっぽい一口にする。",
+  game:"HEART SHOOTING",gameDesc:"30秒。動く♡を15個撃つ。ハズレ3回でGAME OVER。",
   art:1,
-  clue:{q:"海を目の前にした“ともちゃん”の正しいスタンスは？",opts:["とりあえず泳ぐ","見るだけで満足する","漁に出る"],answer:1,
-    ok:"正解。“海は見るだけでいい派”はちゃんと覚えています。笑",bad:"その姿はまだ見たことがありません。笑"}
+  clue:{q:"今日のランチ探しで、最後まで外したくなかった条件は？",opts:["海が見える","食べ放題","駅直結"],answer:0,
+    ok:"正解。『海を見たい』をちゃんと叶えられる店を探しました。",bad:"それも便利だけど、今日いちばん大事だった条件ではないです。"}
 },
 {
   key:"animal",title:"ANIMAL TIME",subtitle:"SOLEIL",
-  action:"相手に一番似ている動物を、1匹だけ決める",
-  note:"出口で答え合わせ。理由まで言うとだいたい揉めます。笑",
-  game:"REAL SHUFFLE",gameDesc:"3ROUND。実際にカードが複数回入れ替わります。サモエドを追え。",
+  time:"15:00頃",when:"動物を一通り見たあと",
+  action:"相手に似ている動物を見つけて理由を伝え合う",
+  note:"似ている理由まで伝える。かわいい理由ならBONUS。笑",
+  game:"REAL SHUFFLE",gameDesc:"4ROUND。カードが本当に何度も入れ替わります。サモエドを追え。",
   art:2,
-  clue:{q:"今日、サモエドがいなくても成立する理由として一番正しいのは？",opts:["アルパカをサモエド認定する","隣の人が必要ならサモエドになる","もう忘れる"],answer:1,
-    ok:"正解。代役の準備はできています。🐶",bad:"発想としては嫌いじゃないけど違います。笑"}
+  clue:{q:"ちなみに、今日ともちゃんの横にいる『サモエド』の出身地はどこ？",opts:["北海道","沖縄","ロシア"],answer:1,
+    ok:"正解。沖縄生まれのサモエドです。🐶",bad:"違います。見た目に反して、かなり南の出身です。笑"}
 },
 {
   key:"next",title:"NEXT PLAN",subtitle:"RETURN & MOVE",
-  action:"次に一緒に行きたい場所を、1つずつ言う",
-  note:"答えはサイトに入力しません。本人に直接どうぞ。",
-  game:"STAR CATCH",gameDesc:"30秒。受け皿を指で動かして星を12個回収。落としすぎると失敗。",
+  time:"17:30頃",when:"車返却後〜池袋へ向かう途中",
+  action:"次に二人で行きたい場所を1つずつ伝え合う",
+  note:"相手の答えに乗っかるのもあり。次の予定の伏線を1つつくる。",
+  game:"STARDUST CATCH",gameDesc:"35秒。受け皿を動かして星を18個回収。♡はBONUS、☁は減点。",
   art:3,
-  clue:{q:"次のデートの“伏線”を1つだけ未来に保存するなら？",opts:["♨️ 温泉","🍷 ワイン","🌃 夜景"],answer:null,
-    ok:"保存しました。どれを選んだかは、次回の相談材料ということで。",bad:""}
+  clue:{q:"前に『寒くなった頃に行けたらいいね』と話していた次の候補は？",opts:["泊まりの温泉","海水浴","早朝登山"],answer:0,
+    ok:"正解。寒くなった頃の温泉は、ちゃんと次回候補に残っています。♨️",bad:"それはだいぶハードな次回デートです。笑"}
 },
 {
   key:"dinner",title:"DINNER LAST PIECE",subtitle:"NIGHT",
-  action:"今日いちばん好きだった時間を、1つずつ決める",
-  note:"答えは最後まで内緒でもOK。まずは自分の中で決めるだけ。",
-  game:"HEART BEAT DUO",gameDesc:"2人協力。10BEAT中7回、光る側をリズムよくタップ。",
+  time:"20:40頃",when:"夜ご飯が落ち着いたら",
+  action:"今日いちばん好きだった時間を1つずつ伝え合う",
+  note:"同じならすごい。違っても「良かった時間が2つあった」でCLEAR。",
+  game:"DUAL LIGHT DROP",gameDesc:"2人協力。左右の光をそれぞれ担当し、ターゲットで止める。10ROUND中7回成功でCLEAR。",
   art:4,
-  clue:{q:"今日という日の“点数”を決めるなら、いちばん大事なのは？",opts:["予定どおり進んだか","写真が何枚撮れたか","二人とも『来てよかった』と思えたか"],answer:2,
-    ok:"私もそれが一番大事だと思います。",bad:"それも大事。でも今日はそこじゃない。"}
+  clue:{q:"今日の最後にいちばん大事なのは？",opts:["予定どおり全部こなす","Pieceを最速で集める","二人とも『来てよかった』と思える"],answer:2,
+    ok:"正解。今日のゴールは、それだけです。",bad:"そこも大事。でも、今日の一番ではないです。"}
 }
 ];
 
 let state={actions:[false,false,false,false,false],pieces:[false,false,false,false,false],futureChoice:null};
 try{
-  const s=JSON.parse(localStorage.getItem("lastPieceV3")||"null");
+  const s=JSON.parse(localStorage.getItem("lastPieceV5")||"null");
   if(s?.actions?.length===5&&s?.pieces?.length===5)state=s;
 }catch(e){}
 let active=-1,cleanupFns=[],gameResolved=false;
 
-function save(){localStorage.setItem("lastPieceV3",JSON.stringify(state))}
+function save(){localStorage.setItem("lastPieceV5",JSON.stringify(state))}
 function countPieces(){return state.pieces.filter(Boolean).length}
 function toast(msg){
   const t=$("toast");t.textContent=msg;t.classList.add("show");
@@ -743,6 +868,7 @@ function render(){
    const actionDone=state.actions[i],pieceDone=state.pieces[i];
    return `<article class="mission ${available?"":"future"}" data-mission="${i}">
      ${pieceDone?'<span class="clear-stamp">PIECE GET ✓</span>':""}
+     <div class="mission-time"><b>${m.time}</b><span>${m.when}</span></div>
      <div class="mission-top">
        <div class="mission-num">${i+1}</div>
        <div class="scene-thumb">${sceneSVG(m.art)}</div>
@@ -757,7 +883,7 @@ function render(){
      ${
        pieceDone ? `<div class="game-unlock"><div class="game-kicker">SECRET ARCADE</div><div class="game-name">${m.game}</div><div class="game-desc">CLEAR済み。Pieceを獲得しました。</div></div>`
        : actionDone ? `<div class="game-unlock"><div class="game-kicker">SURPRISE GAME UNLOCKED</div><div class="game-name">${m.game}</div><div class="game-desc">${m.gameDesc}</div><button class="game-open" data-game="${i}">PLAY GAME ›</button></div>`
-       : `<div class="surprise-lock">${available?"現実MISSIONを達成すると、秘密のゲームが解放されます。":"前のPieceを獲得すると解放されます。"}</div>`
+       : `<div class="surprise-lock">${available?"MISSION達成後に、ゲーム内容を初公開します。":"前のPieceを獲得すると解放されます。"}</div>`
      }
    </article>`;
  }).join("");
@@ -781,24 +907,37 @@ $("puzzleClose").onclick=()=>closePuzzle();
 $("finalBtn").onclick=openPuzzle;
 $("resetBtn").onclick=()=>{
  if(confirm("進行状況をリセットしますか？")){
-   localStorage.removeItem("lastPieceV3");location.reload();
+   localStorage.removeItem("lastPieceV5");location.reload();
  }
 };
 function addCleanup(fn){cleanupFns.push(fn)}
 function cleanup(){cleanupFns.splice(0).forEach(fn=>{try{fn()}catch(e){}})}
 function closeGame(){cleanup();$("gameModal").classList.add("hidden");$("clueWrap").innerHTML="";active=-1}
 function setControls(html=""){$("gameControls").innerHTML=html}
+function resultOverlay(kind,title,detail,buttonLabel,buttonId){
+ const arcade=$("arcade");
+ arcade.classList.remove("hidden");
+ arcade.insertAdjacentHTML("beforeend",`
+   <div class="result-overlay ${kind}">
+     <div class="result-spark">✦</div>
+     <strong>${title}</strong>
+     <span>${detail}</span>
+     <button id="${buttonId}">${buttonLabel}</button>
+   </div>`);
+}
 function failGame(reason){
  cleanup();gameResolved=true;
- $("gameMessage").textContent=reason;
- setControls(`<button class="retry" id="retryBtn">RETRY ↻</button>`);
- $("retryBtn").onclick=()=>startGame(active);
+ $("gameMessage").textContent="";
+ setControls("");
+ resultOverlay("failed","TRY AGAIN",reason,"RETRY ↻","retryOverlay");
+ $("retryOverlay").onclick=()=>startGame(active);
 }
 function clearGame(msg){
  cleanup();gameResolved=true;
- $("gameMessage").textContent=msg;
- setControls(`<button class="next-to-clue" id="toClue">SECRET CLUEへ ›</button>`);
- $("toClue").onclick=showClue;
+ $("gameMessage").textContent="";
+ setControls("");
+ resultOverlay("cleared","GAME CLEAR!","おめでとう！ "+msg,"SECRET CLUEへ ›","clearOverlay");
+ $("clearOverlay").onclick=showClue;
 }
 function openGame(i){
  active=i;$("gameModal").classList.remove("hidden");
@@ -807,29 +946,35 @@ function openGame(i){
  startGame(i);
 }
 function startGame(i){
- cleanup();gameResolved=false;$("gameMessage").textContent="";setControls("");$("clueWrap").innerHTML="";
+ cleanup();gameResolved=false;
+ $("gameMessage").textContent="";
+ setControls("");
+ $("clueWrap").innerHTML="";
+ $("arcade").classList.remove("hidden");
+ $("gameInstruction").classList.remove("hidden");
+ $("arcade").innerHTML="";
  if(i===0)timingGame();
  if(i===1)shootGame();
  if(i===2)shuffleGame();
  if(i===3)starCatchGame();
- if(i===4)duoBeatGame();
+ if(i===4)dualLightGame();
 }
 
-/* TIMING RUSH — 5 rounds, 4 hits required */
+/* TIMING RUSH — 7 rounds, 5 hits required */
 function timingGame(){
  let round=1,hits=0,pos=0,dir=1,last=performance.now(),raf=0,locked=false;
  const arcade=$("arcade");
  function paint(){
-   const widths=[18,15,12,10,8],speeds=[.065,.082,.100,.118,.138];
-   const zoneLeft=18+Math.random()*60;
-   arcade.innerHTML=`<div class="hud"><span>ROUND ${round}/5</span><span>HIT ${hits}/4</span></div>
+   const widths=[19,17,15,13,11,9,8],speeds=[.063,.074,.084,.096,.108,.122,.137];
+   const zoneLeft=10+Math.random()*(80-widths[round-1]);
+   arcade.innerHTML=`<div class="hud"><span>ROUND ${round}/7</span><span>HIT ${hits}/5</span></div>
    <div class="timing-stage"><div class="timing-track"><i class="timing-zone" style="left:${zoneLeft}%;width:${widths[round-1]}%"></i><i class="timing-marker" id="tm"></i></div>
    <button class="arcade-btn" id="timingStop">STOP</button></div>`;
-   pos=Math.random()*15;dir=1;locked=false;last=performance.now();
+   pos=Math.random()*12;dir=1;locked=false;last=performance.now();
    function step(now){
      const dt=Math.min(32,now-last);last=now;pos+=dir*dt*speeds[round-1];
      if(pos>100){pos=100;dir=-1}if(pos<0){pos=0;dir=1}
-     const m=$("tm");if(m)m.style.left=`calc(${pos}% - 6px)`;
+     const mk=$("tm");if(mk)mk.style.left=`calc(${pos}% - 6px)`;
      raf=requestAnimationFrame(step);
    }
    raf=requestAnimationFrame(step);
@@ -839,9 +984,8 @@ function timingGame(){
      if(ok){hits++;$("gameMessage").textContent="PERFECT! ✨"}
      else $("gameMessage").textContent="MISS…";
      setTimeout(()=>{
-       if(round===5){
-         hits>=4?clearGame(`TIMING RUSH CLEAR — ${hits}/5 HIT`):failGame(`惜しい。${hits}/5 HIT。4回成功でCLEAR。`);
-       }else{round++;$("gameMessage").textContent="";paint()}
+       if(round===7){hits>=5?clearGame(`${hits}/7 HIT`):failGame(`${hits}/7 HIT。5回成功でCLEAR。`)}
+       else{round++;$("gameMessage").textContent="";paint()}
      },520);
    };
  }
@@ -850,104 +994,105 @@ function timingGame(){
 
 /* HEART SHOOTING — 25 sec, score 12, max 3 mistakes */
 function shootGame(){
- const arcade=$("arcade");let score=0,bad=0,time=25,spawnTimer,timer,ended=false;
- arcade.innerHTML=`<div class="hud"><span>♡ <b id="shootScore">0</b>/12</span><span>MISS <b id="shootBad">0</b>/3</span><span><b id="shootTime">25</b>s</span></div>`;
+ const arcade=$("arcade");let score=0,bad=0,time=30,spawnTimer,timer,ended=false;
+ arcade.innerHTML=`<div class="hud"><span>♡ <b id="shootScore">0</b>/15</span><span>MISS <b id="shootBad">0</b>/3</span><span><b id="shootTime">30</b>s</span></div><div class="shoot-field" id="shootField"></div>`;
+ const field=$("shootField");
  function spawn(){
    if(ended)return;
-   const heart=Math.random()<.64;
-   const b=document.createElement("button");b.className=`target ${heart?"heart":"bad"}`;b.textContent=heart?"♡":["✦","☂","○"][Math.floor(Math.random()*3)];
-   let x=5+Math.random()*78,y=17+Math.random()*67;
+   const heart=Math.random()<.60;
+   const b=document.createElement("button");b.className=`target ${heart?"heart":"bad"}`;b.textContent=heart?"♡":["✦","☂","○","🐟"][Math.floor(Math.random()*4)];
+   let x=4+Math.random()*78,y=15+Math.random()*67;
    b.style.left=x+"%";b.style.top=y+"%";
-   let vx=(Math.random()>.5?1:-1)*(14+Math.random()*24),vy=(Math.random()>.5?1:-1)*(10+Math.random()*20),last=performance.now(),raf;
+   let vx=(Math.random()>.5?1:-1)*(17+Math.random()*29),vy=(Math.random()>.5?1:-1)*(12+Math.random()*24),last=performance.now(),raf;
    function move(now){
      if(!b.isConnected)return;
      const dt=Math.min(32,now-last)/1000;last=now;x+=vx*dt;y+=vy*dt;
-     if(x<3||x>84)vx*=-1;if(y<15||y>78)vy*=-1;
+     if(x<2||x>84)vx*=-1;if(y<13||y>77)vy*=-1;
      b.style.left=x+"%";b.style.top=y+"%";raf=requestAnimationFrame(move);
    }
    raf=requestAnimationFrame(move);
    b.onclick=()=>{
+     if(ended)return;
      if(heart){score++;$("shootScore").textContent=score}
      else{bad++;$("shootBad").textContent=bad}
      cancelAnimationFrame(raf);b.remove();
-     if(score>=12)finish(true);
+     if(score>=15)finish(true);
      else if(bad>=3)finish(false);
    };
-   arcade.appendChild(b);setTimeout(()=>{cancelAnimationFrame(raf);b.remove()},2300);
+   field.appendChild(b);setTimeout(()=>{cancelAnimationFrame(raf);b.remove()},2500);
  }
  function finish(ok){
    if(ended)return;ended=true;clearInterval(spawnTimer);clearInterval(timer);
    [...arcade.querySelectorAll(".target")].forEach(x=>x.remove());
-   ok?clearGame("HEART SHOOTING CLEAR ♡"):failGame(`GAME OVER — ♡${score}/12 / MISS ${bad}/3`);
+   ok?clearGame(`♡ ${score}/15`):failGame(`♡ ${score}/15 / MISS ${bad}/3`);
  }
- spawnTimer=setInterval(spawn,470);spawn();spawn();spawn();
- timer=setInterval(()=>{time--;$("shootTime").textContent=time;if(time<=0)finish(score>=12)},1000);
+ spawnTimer=setInterval(spawn,430);spawn();spawn();spawn();
+ timer=setInterval(()=>{time--;$("shootTime").textContent=time;if(time<=0)finish(score>=15)},1000);
  addCleanup(()=>{ended=true;clearInterval(spawnTimer);clearInterval(timer)});
 }
 
 /* REAL SHUFFLE — visible animated swaps, 3 rounds */
 function shuffleGame(){
- let round=1;
+ let round=1,runToken=0;
  const symbols=["🐶","🦙","🦘","🐑"];
  const arcade=$("arcade");
  async function playRound(){
-   arcade.innerHTML=`<div class="hud"><span>ROUND ${round}/3</span><span>追跡対象：🐶</span></div><div class="shuffle-table" id="shuffleTable"></div><div class="shuffle-round" id="shuffleInfo">位置を覚えて…</div>`;
-   const table=$("shuffleTable"),w=arcade.clientWidth;
-   const positions=[w*.08,w*.31,w*.54,w*.77].map(x=>x-35);
-   let order=[0,1,2,3];
+   const token=++runToken;
+   arcade.innerHTML=`<div class="hud"><span>ROUND ${round}/4</span><span>追跡対象：🐶</span></div><div class="shuffle-table" id="shuffleTable"></div><div class="shuffle-round" id="shuffleInfo">位置を覚えて…</div>`;
+   const table=$("shuffleTable");
+   await sleep(50);
+   const w=table.clientWidth,cardW=Math.min(68,(w-42)/4),gap=Math.max(8,(w-cardW*4)/5);
+   const positions=[0,1,2,3].map(i=>gap+(cardW+gap)*i);
+   let slotOf=[0,1,2,3];
    const cards=symbols.map((s,i)=>{
-     const b=document.createElement("button");b.className="shuffle-card";b.textContent=s;b.dataset.id=i;b.style.transform=`translateX(${positions[i]}px)`;
+     const b=document.createElement("button");b.className="shuffle-card";
+     b.style.width=cardW+"px";b.style.height=(cardW*1.42)+"px";
+     b.textContent=s;b.dataset.id=i;b.style.transform=`translateX(${positions[i]}px)`;
      table.appendChild(b);return b;
    });
-   await sleep(1200);
+   await sleep(1300);if(token!==runToken)return;
    cards.forEach(c=>c.classList.add("covered"));$("shuffleInfo").textContent="SHUFFLE START";
-   const swaps=round===1?7:round===2?9:11;
+   const swaps=[8,10,12,14][round-1],delay=[430,360,300,255][round-1];
    for(let k=0;k<swaps;k++){
-     let a=Math.floor(Math.random()*4),b=(a+1+Math.floor(Math.random()*3))%4;
-     const ia=order.indexOf(a),ib=order.indexOf(b);
-     [order[ia],order[ib]]=[order[ib],order[ia]];
-     cards[a].style.transform=`translateX(${positions[ib]}px)`;
-     cards[b].style.transform=`translateX(${positions[ia]}px)`;
-     await sleep(round===1?420:round===2?350:285);
+     let a=Math.floor(Math.random()*4),b=Math.floor(Math.random()*4);while(b===a)b=Math.floor(Math.random()*4);
+     const sa=slotOf[a],sb=slotOf[b];slotOf[a]=sb;slotOf[b]=sa;
+     cards[a].style.transform=`translateX(${positions[sb]}px)`;
+     cards[b].style.transform=`translateX(${positions[sa]}px)`;
+     await sleep(delay);if(token!==runToken)return;
    }
    $("shuffleInfo").textContent="サモエドはどこ？";
-   order.forEach((cardId,slot)=>{
-     const c=cards[cardId];c.onclick=()=>{
-       if(cardId===0){
-         cards.forEach(x=>{x.classList.remove("covered");x.onclick=null});
-         $("gameMessage").textContent="FOUND! 🐶";
-         setTimeout(()=>{if(round===3)clearGame("REAL SHUFFLE CLEAR 🐶");else{round++;$("gameMessage").textContent="";playRound()}},650);
-       }else{
-         c.classList.remove("covered");c.textContent=symbols[cardId];
-         cards.forEach(x=>x.onclick=null);
-         setTimeout(()=>failGame(`ROUND ${round} MISS — サモエドはそこじゃない。笑`),450);
-       }
-     };
+   cards.forEach((c,cardId)=>c.onclick=()=>{
+     if(cardId===0){
+       cards.forEach(x=>{x.classList.remove("covered");x.onclick=null});
+       $("gameMessage").textContent="FOUND! 🐶";
+       setTimeout(()=>{if(round===4)clearGame("4ROUND COMPLETE 🐶");else{round++;$("gameMessage").textContent="";playRound()}},700);
+     }else{
+       c.classList.remove("covered");c.textContent=symbols[cardId];cards.forEach(x=>x.onclick=null);
+       setTimeout(()=>failGame(`ROUND ${round} MISS — サモエドはそこじゃない。笑`),480);
+     }
    });
  }
- playRound();
+ playRound();addCleanup(()=>{runToken++});
 }
 
-/* STAR CATCH — tray controlled by touch, 30 sec */
+/* STARDUST CATCH — tray controlled by touch, 30 sec */
 function starCatchGame(){
- const arcade=$("arcade");let score=0,miss=0,time=30,objects=[],raf=0,timer,spawnTimer,last=performance.now(),ended=false;
- arcade.innerHTML=`<div class="hud"><span>STAR <b id="catchScore">0</b>/12</span><span>MISS <b id="catchMiss">0</b>/6</span><span><b id="catchTime">30</b>s</span></div><div class="catch-field" id="catchField"><div class="basket" id="basket"></div></div>`;
+ const arcade=$("arcade");let score=0,miss=0,time=35,combo=0,objects=[],raf=0,timer,spawnTimer,last=performance.now(),ended=false;
+ arcade.innerHTML=`<div class="hud"><span>POINT <b id="catchScore">0</b>/18</span><span>MISS <b id="catchMiss">0</b>/7</span><span>COMBO <b id="catchCombo">0</b></span><span><b id="catchTime">35</b>s</span></div><div class="catch-field" id="catchField"><div class="basket" id="basket"></div></div>`;
  const field=$("catchField"),basket=$("basket");let bx=(field.clientWidth-76)/2;basket.style.left=bx+"px";
- function setBasket(clientX){
-   const r=field.getBoundingClientRect();bx=Math.max(0,Math.min(r.width-76,clientX-r.left-38));basket.style.left=bx+"px";
- }
- field.addEventListener("pointerdown",e=>{field.setPointerCapture?.(e.pointerId);setBasket(e.clientX)});
+ function setBasket(clientX){const r=field.getBoundingClientRect();bx=Math.max(0,Math.min(r.width-76,clientX-r.left-38));basket.style.left=bx+"px"}
+ field.addEventListener("pointerdown",e=>{e.preventDefault();field.setPointerCapture?.(e.pointerId);setBasket(e.clientX)});
  field.addEventListener("pointermove",e=>{if(e.buttons||e.pointerType==="touch")setBasket(e.clientX)});
  function spawn(){
    if(ended)return;
-   const el=document.createElement("span");const bonus=Math.random()<.12;
-   el.className="falling";el.textContent=bonus?"♡":"⭐";let x=8+Math.random()*82,y=-30,vy=65+Math.random()*52;
-   el.style.left=x+"%";field.appendChild(el);objects.push({el,x,y,vy,bonus});
+   const roll=Math.random(),kind=roll<.10?"cloud":roll<.22?"heart":"star";
+   const el=document.createElement("span");el.className="falling";el.textContent=kind==="heart"?"♡":kind==="cloud"?"☁":"⭐";
+   let x=5+Math.random()*84,y=-32,elapsed=35-time,vy=70+Math.random()*55+elapsed*2.2;
+   el.style.left=x+"%";field.appendChild(el);objects.push({el,x,y,vy,kind});
  }
  function finish(ok){
-   if(ended)return;ended=true;cancelAnimationFrame(raf);clearInterval(timer);clearInterval(spawnTimer);
-   objects.forEach(o=>o.el.remove());
-   ok?clearGame(`STAR CATCH CLEAR — ${score} STAR`):failGame(`GAME OVER — STAR ${score}/12 / MISS ${miss}/6`);
+   if(ended)return;ended=true;cancelAnimationFrame(raf);clearInterval(timer);clearInterval(spawnTimer);objects.forEach(o=>o.el.remove());
+   ok?clearGame(`${score} POINT / MAX COMBO ${combo}`):failGame(`${score}/18 POINT / MISS ${miss}/7`);
  }
  function loop(now){
    const dt=Math.min(35,now-last)/1000;last=now;
@@ -956,45 +1101,63 @@ function starCatchGame(){
      o.y+=o.vy*dt;o.el.style.transform=`translateY(${o.y}px)`;
      const er=o.el.getBoundingClientRect();
      if(er.bottom>=br.top&&er.left<br.right&&er.right>br.left&&er.top<br.bottom){
-       score+=o.bonus?2:1;$("catchScore").textContent=score;o.el.remove();
-       if(score>=12){finish(true)}return false;
+       if(o.kind==="cloud"){score=Math.max(0,score-2);combo=0;$("gameMessage").textContent="☁ -2 POINT";}
+       else{score+=o.kind==="heart"?3:1;combo++;$("gameMessage").textContent=o.kind==="heart"?"♡ BONUS +3":"NICE CATCH!"}
+       $("catchScore").textContent=score;$("catchCombo").textContent=combo;o.el.remove();if(score>=18)finish(true);return false;
      }
-     if(o.y>fr.height-25){miss++;$("catchMiss").textContent=miss;o.el.remove();if(miss>=6)finish(false);return false}
+     if(o.y>fr.height-24){if(o.kind!=="cloud"){miss++;combo=0;$("catchMiss").textContent=miss;$("catchCombo").textContent=combo}o.el.remove();if(miss>=7)finish(false);return false}
      return true;
    });
    if(!ended)raf=requestAnimationFrame(loop);
  }
- spawnTimer=setInterval(spawn,620);spawn();spawn();raf=requestAnimationFrame(loop);
- timer=setInterval(()=>{time--;$("catchTime").textContent=time;if(time<=0)finish(score>=12)},1000);
+ spawnTimer=setInterval(spawn,550);spawn();spawn();raf=requestAnimationFrame(loop);
+ timer=setInterval(()=>{time--;$("catchTime").textContent=time;if(time<=0)finish(score>=18)},1000);
  addCleanup(()=>{ended=true;cancelAnimationFrame(raf);clearInterval(timer);clearInterval(spawnTimer)});
 }
 
-/* HEART BEAT DUO — 10 beats, 7 successes */
-function duoBeatGame(){
- const arcade=$("arcade");let beat=0,score=0,activeSide=null,windowOpen=false,seq=["A","B","A","B","B","A","A","B","A","B"],timer=null;
- arcade.innerHTML=`<div class="hud"><span>BEAT <b id="beatNo">0</b>/10</span><span>SYNC <b id="beatScore">0</b>/7</span></div>
- <div class="beat-stage"><div class="beat-heart" id="beatHeart">♥</div><div class="beat-prompt" id="beatPrompt">READY?</div>
- <div class="duo-pads"><button class="duo-pad duo-a" id="duoA">TATSUKI</button><button class="duo-pad duo-b" id="duoB">TOMOKO</button></div></div>`;
- function finish(){
-   score>=7?clearGame(`HEART BEAT DUO CLEAR — ${score}/10 SYNC`):failGame(`SYNC ${score}/10。7回成功でCLEAR。`);
- }
+/* DUAL LIGHT DROP — two lanes, tap when light enters target */
+function dualLightGame(){
+ const arcade=$("arcade");let round=0,score=0,raf=0,token=0,current=null;
+ arcade.innerHTML=`<div class="hud"><span>ROUND <b id="dlRound">0</b>/10</span><span>SYNC <b id="dlScore">0</b>/7</span></div>
+ <div class="dual-drop">
+   <div class="drop-lane leftlane"><b>TATSUKI</b><div class="drop-track"><i class="drop-target"></i><i class="drop-light" id="lightA"></i></div><button id="tapA">TATSUKI TAP</button></div>
+   <div class="drop-lane rightlane"><b>TOMOKO</b><div class="drop-track"><i class="drop-target"></i><i class="drop-light" id="lightB"></i></div><button id="tapB">TOMOKO TAP</button></div>
+ </div>`;
+ let press={A:false,B:false};
+ $("tapA").onclick=()=>tap("A");$("tapB").onclick=()=>tap("B");
  function next(){
-   if(beat>=10)return finish();
-   activeSide=seq[beat];beat++;$("beatNo").textContent=beat;
-   const btn=activeSide==="A"?$("duoA"):$("duoB");
-   $("beatPrompt").textContent=activeSide==="A"?"TATSUKIの番":"TOMOKOの番";
-   setTimeout(()=>{
-     windowOpen=true;btn.classList.add("ready");$("beatHeart").classList.add("pulse");
-     timer=setTimeout(()=>{windowOpen=false;btn.classList.remove("ready");$("beatHeart").classList.remove("pulse");$("gameMessage").textContent="MISS";setTimeout(next,360)},520);
-   },620);
+   if(round>=10){score>=7?clearGame(`${score}/10 SYNC`):failGame(`${score}/10 SYNC。7回成功でCLEAR。`);return}
+   round++;$("dlRound").textContent=round;press={A:false,B:false};
+   const both=round>=9,side=both?"AB":(round%2?"A":"B"),duration=Math.max(1150,1850-round*55);
+   current={side,start:performance.now(),duration,done:false};
+   $("gameMessage").textContent=both?"FINAL DUO — 2人とも狙って！":side==="A"?"TATSUKI ROUND":"TOMOKO ROUND";
+   animate();
+ }
+ function animate(){
+   const c=current;if(!c||c.done)return;
+   const p=Math.min(1,(performance.now()-c.start)/c.duration),y=p*100;
+   if(c.side.includes("A"))$("lightA").style.top=`calc(${y}% - 9px)`;else $("lightA").style.top="-15px";
+   if(c.side.includes("B"))$("lightB").style.top=`calc(${y}% - 9px)`;else $("lightB").style.top="-15px";
+   if(p>=1){finishRound(false);return}
+   raf=requestAnimationFrame(animate);
  }
  function tap(side){
-   if(!windowOpen||side!==activeSide){$("gameMessage").textContent="EARLY / WRONG SIDE";return}
-   clearTimeout(timer);windowOpen=false;score++;$("beatScore").textContent=score;$("gameMessage").textContent="SYNC ♥";
-   $("duoA").classList.remove("ready");$("duoB").classList.remove("ready");$("beatHeart").classList.remove("pulse");setTimeout(next,330);
+   const c=current;if(!c||c.done||!c.side.includes(side))return;
+   const p=(performance.now()-c.start)/c.duration;
+   const good=p>=.72&&p<=.86;
+   press[side]=good;
+   if(c.side==="AB"){
+     if(press.A&&press.B)finishRound(true);
+     else if(!good)finishRound(false);
+   }else finishRound(good);
  }
- $("duoA").onclick=()=>tap("A");$("duoB").onclick=()=>tap("B");
- setTimeout(next,600);addCleanup(()=>clearTimeout(timer));
+ function finishRound(ok){
+   if(!current||current.done)return;current.done=true;cancelAnimationFrame(raf);
+   if(ok){score++;$("dlScore").textContent=score;$("gameMessage").textContent="PERFECT SYNC ♥"}
+   else $("gameMessage").textContent="MISS";
+   setTimeout(next,520);
+ }
+ setTimeout(next,700);addCleanup(()=>{token++;cancelAnimationFrame(raf);current=null});
 }
 
 /* SECRET CLUE */
@@ -1018,57 +1181,74 @@ function unlockPiece(){
  $("pieceDone").onclick=()=>{closeGame();$("arcade").classList.remove("hidden");$("gameInstruction").classList.remove("hidden");render();toast(`PIECE ${i+1}/5 GET ✨`)};
 }
 
-/* FINAL PUZZLE — reorder 5 tiles until gold line connects */
+/* FINAL PUZZLE — 3×3 romantic image shuffle, tap-to-swap */
+function finalArtworkMarkup(){
+ return `
+  <defs>
+    <linearGradient id="faSkyInline" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#8fc8e6"/><stop offset=".48" stop-color="#eadde8"/><stop offset="1" stop-color="#293b58"/></linearGradient>
+    <linearGradient id="faSeaInline" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#65a1bd"/><stop offset="1" stop-color="#315f7d"/></linearGradient>
+  </defs>
+  <rect width="300" height="300" fill="url(#faSkyInline)"/>
+  <circle cx="242" cy="48" r="27" fill="#ffe0a0"/>
+  <path d="M0 126 C70 112 118 128 176 110 C224 96 260 106 300 97 V211 H0Z" fill="url(#faSeaInline)"/>
+  <path d="M0 201 C77 169 146 173 210 188 C249 197 275 198 300 191 V300 H0Z" fill="#263951"/>
+  <path d="M-7 239 C71 193 139 195 207 210 C248 220 274 220 307 214" fill="none" stroke="#f5d59d" stroke-width="5" stroke-dasharray="15 10"/>
+  <g transform="translate(25 38)" fill="none" stroke="#fff8e5" stroke-width="4" stroke-linejoin="round"><rect x="0" y="8" width="55" height="39" rx="7"/><circle cx="28" cy="27" r="11"/><path d="M9 8l7-9h21l7 9"/></g>
+  <path d="M110 49c11-17 28-17 39 0 11-17 28-17 39 0-2 26-39 45-39 45s-37-19-39-45Z" fill="none" stroke="#f7b2c4" stroke-width="4"/>
+  <g transform="translate(220 119)" fill="#f6e4d3"><circle cx="0" cy="0" r="7"/><circle cx="18" cy="-6" r="6"/><circle cx="33" cy="4" r="6"/><ellipse cx="17" cy="20" rx="16" ry="12"/></g>
+  <g transform="translate(36 205)" fill="none" stroke="#c9e4f3" stroke-width="4"><path d="M22 0C9 0 0 10 0 22c0 18 22 38 22 38s22-20 22-38C44 10 35 0 22 0Z"/><circle cx="22" cy="22" r="7"/></g>
+  <g transform="translate(202 210)" fill="none" stroke="#f4c4d1" stroke-width="4" stroke-linecap="round"><path d="M0 0l6 28q2 8 11 8t11-8L34 0"/><path d="M6 17h22M17 36v25M7 62h20"/><path d="M40 6l5 24q2 7 10 7t10-7L70 6"/><path d="M45 22h20M55 37v24M46 62h19"/></g>
+  <g fill="#fff" opacity=".9"><circle cx="31" cy="22" r="1.4"/><circle cx="84" cy="16" r="1"/><circle cx="137" cy="28" r="1.2"/><circle cx="188" cy="20" r="1.3"/><circle cx="272" cy="82" r="1.3"/></g>`;
+}
 function openPuzzle(){
  $("puzzleModal").classList.remove("hidden");$("puzzleHead").classList.remove("hidden");
- const shuffled=[...puzzleOrder].sort(()=>Math.random()-.5);
- $("puzzleContent").innerHTML=`<div class="puzzle-help"><b>2人協力ルール</b><br>青PieceはTATSUKI、ピンクPieceはTOMOKO。交互に1枚ずつ動かして、<b>各Pieceの左右にある金色の線が、切れ目なく1本につながる順番</b>に並べてください。<br>文字ではなく、線の高さとカーブがヒントです。</div>
- <div class="puzzle-board"><div class="puzzle-row" id="puzzleRow">${shuffled.map(id=>puzzleTile(id)).join("")}</div><div class="puzzle-status" id="puzzleStatus">線の高さをよく見て。隣同士が自然につながるはず。</div></div>
- <button class="puzzle-check" id="puzzleCheck">この並びでCHECK</button>`;
- setupSortable();
- let puzzleMisses=0;
- $("puzzleCheck").onclick=()=>{
-   const ids=[...document.querySelectorAll(".puzzle-tile")].map(x=>+x.dataset.id);
-   const ok=ids.every((v,i)=>v===puzzleOrder[i]);
-   if(ok){
-     $("puzzleStatus").textContent="CONNECTED ✨ 金色の線が、きれいに1本につながった。";
-     setTimeout(showTouchScene,900);
-   }else{
-     puzzleMisses++;
-     if(puzzleMisses===1){
-       $("puzzleStatus").textContent="まだどこかで線が途切れている。まずは隣り合うPieceの“出口と入口の高さ”を見てみて。";
-     }else if(puzzleMisses===2){
-       $("puzzleStatus").textContent="HINT：ANIMALの右端とDRIVEの左端は、同じ高さでつながります。";
-     }else{
-       $("puzzleStatus").textContent="MORE HINT：左端はANIMAL。そこから金色の線を右へ追ってみて。";
+ const order=[4,0,8,2,6,1,7,3,5];
+ let turn="TATSUKI",selected=null,moves=0,hintShown=false;
+ $("puzzleContent").innerHTML=`<div class="puzzle-help"><b>2人協力ルール</b><br>9枚の絵を並べ替えて「今日の1枚」を完成させます。<br><b>青枠はTATSUKI、ピンク枠はTOMOKO。</b> 自分の色のPieceを1枚選び、入れ替えたい場所をタップ。交互に進めます。</div>
+ <div class="final-art-preview hidden" id="finalArtPreview">${finalArtworkSVG()}</div>
+ <div class="tile-puzzle" id="tilePuzzle"></div>
+ <div class="turn-panel"><b id="turnLabel">TATSUKI TURN</b><span>MOVE <i id="moveCount">0</i></span></div>
+ <div class="puzzle-status" id="puzzleStatus">絵のつながりを見て並べよう。迷ったら完成イメージを2秒だけ見られます。</div>
+ <div class="puzzle-buttons"><button class="puzzle-check" id="showHint">HINT：完成イメージを2秒見る</button><button class="puzzle-pass" id="passTurn">PASS TURN</button></div>`;
+ function ownerFor(tile){return tile===4?"TOGETHER":tile%2===0?"TATSUKI":"TOMOKO"}
+ function tileHTML(tile,pos){
+   const r=Math.floor(tile/3),c=tile%3,owner=ownerFor(tile),cls=owner==="TATSUKI"?"blue":owner==="TOMOKO"?"pink":"gold";
+   const px=[0,50,100][c],py=[0,50,100][r];
+   return `<button class="image-tile ${cls}" data-tile="${tile}" data-pos="${pos}">
+     <span class="tile-art" style="background-position:${px}% ${py}%"></span>
+     <small>${owner}</small>
+   </button>`;
+ }
+ function draw(){
+   $("tilePuzzle").innerHTML=order.map((t,i)=>tileHTML(t,i)).join("");
+   $("turnLabel").textContent=`${turn} TURN`;
+   $("moveCount").textContent=moves;
+   document.querySelectorAll(".image-tile").forEach(btn=>btn.onclick=()=>{
+     const pos=+btn.dataset.pos,tile=order[pos],owner=ownerFor(tile);
+     if(selected===null){
+       if(owner!==turn&&owner!=="TOGETHER"){toast(`${turn}のPieceを選んでね`);return}
+       selected=pos;btn.classList.add("selected");return;
      }
-   }
+     if(selected===pos){selected=null;draw();return}
+     [order[selected],order[pos]]=[order[pos],order[selected]];
+     selected=null;moves++;turn=turn==="TATSUKI"?"TOMOKO":"TATSUKI";draw();
+     if(order.every((v,i)=>v===i)){
+       $("puzzleStatus").textContent="PUZZLE COMPLETE! おめでとう ✨";
+       document.querySelectorAll(".image-tile").forEach(x=>x.disabled=true);
+       setTimeout(showTouchScene,1200);
+     }
+   });
+ }
+ draw();
+ $("passTurn").onclick=()=>{turn=turn==="TATSUKI"?"TOMOKO":"TATSUKI";selected=null;draw();toast("TURN CHANGE");};
+ $("showHint").onclick=()=>{
+   if(hintShown)return;hintShown=true;
+   const p=$("finalArtPreview");p.classList.remove("hidden");
+   setTimeout(()=>{p.classList.add("hidden");hintShown=false},2000);
  };
 }
-function puzzleTile(id){
- const p=pieceData[id];
- const owner=pieceData[id].owner;
- return `<button class="puzzle-tile" data-id="${id}">${pieceSVG(id,false)}<span class="owner">${owner}</span></button>`;
-}
-function setupSortable(){
- const row=$("puzzleRow");let drag=null,startX=0,originX=0;
- function down(e){
-   const tile=e.target.closest(".puzzle-tile");if(!tile)return;
-   e.preventDefault();drag=tile;startX=e.clientX;originX=0;tile.classList.add("dragging");tile.setPointerCapture?.(e.pointerId);
- }
- function move(e){
-   if(!drag)return;e.preventDefault();
-   const dx=e.clientX-startX;drag.style.transform=`translateX(${dx}px) scale(1.07)`;
-   const r=drag.getBoundingClientRect(),center=r.left+r.width/2;
-   const others=[...row.children].filter(x=>x!==drag);
-   for(const o of others){
-     const or=o.getBoundingClientRect(),oc=or.left+or.width/2;
-     if(center<oc&&drag.compareDocumentPosition(o)&Node.DOCUMENT_POSITION_FOLLOWING){row.insertBefore(drag,o);startX=e.clientX;drag.style.transform="" ;break}
-     if(center>oc&&drag.compareDocumentPosition(o)&Node.DOCUMENT_POSITION_PRECEDING){row.insertBefore(drag,o.nextSibling);startX=e.clientX;drag.style.transform="";break}
-   }
- }
- function up(){if(!drag)return;drag.style.transform="";drag.classList.remove("dragging");drag=null}
- row.addEventListener("pointerdown",down);row.addEventListener("pointermove",move);row.addEventListener("pointerup",up);row.addEventListener("pointercancel",up);
+function finalArtworkSVG(){
+ return `<img class="full-art" src="final-art.svg" alt="完成イメージ">`;
 }
 function closePuzzle(){
  $("puzzleModal").classList.add("hidden");$("fullHeart").classList.add("hidden","grow");
@@ -1149,10 +1329,60 @@ addEventListener("resize",updateBG);
 
 function sleep(ms){return new Promise(r=>setTimeout(r,ms))}
 render();updateBG();
+
+const missionClock=[
+ {h:11,m:30,title:"DRIVE START"},
+ {h:13,m:20,title:"SANGA LUNCH"},
+ {h:15,m:0,title:"ANIMAL TIME"},
+ {h:17,m:30,title:"NEXT PLAN"},
+ {h:20,m:40,title:"DINNER LAST PIECE"}
+];
+$("calendarBtn").onclick=downloadMissionCalendar;
+function pad2(n){return String(n).padStart(2,"0")}
+function downloadMissionCalendar(){
+ const date="20260922";
+ const events=missions.map((m,i)=>{
+   const c=missionClock[i],hh=pad2(c.h),mm=pad2(c.m),endM=c.m+20,endH=c.h+Math.floor(endM/60),eem=pad2(endM%60),eeh=pad2(endH);
+   return `BEGIN:VEVENT\r\nUID:lastpiece-${i+1}@0922\r\nDTSTAMP:20260921T000000Z\r\nDTSTART;TZID=Asia/Tokyo:${date}T${hh}${mm}00\r\nDTEND;TZID=Asia/Tokyo:${date}T${eeh}${eem}00\r\nSUMMARY:THE LAST PIECE｜MISSION ${i+1} ${m.title}\r\nDESCRIPTION:${m.when}｜${m.action}\r\nBEGIN:VALARM\r\nTRIGGER:-PT5M\r\nACTION:DISPLAY\r\nDESCRIPTION:5分後にMISSION ${i+1}｜${m.title}\r\nEND:VALARM\r\nEND:VEVENT`;
+ }).join("\r\n");
+ const ics=`BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//THE LAST PIECE//JP\r\nCALSCALE:GREGORIAN\r\nMETHOD:PUBLISH\r\n${events}\r\nEND:VCALENDAR`;
+ const blob=new Blob([ics],{type:"text/calendar;charset=utf-8"}),url=URL.createObjectURL(blob),a=document.createElement("a");
+ a.href=url;a.download="0922-the-last-piece-reminders.ics";document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
+ toast("カレンダー用リマインダーを作成しました 🔔");
+}
+let reminderShown=-1;
+function checkMissionReminder(){
+ const now=new Date();
+ if(now.getFullYear()!==2026||now.getMonth()!==8||now.getDate()!==22)return;
+ missionClock.forEach((c,i)=>{
+   const due=new Date(2026,8,22,c.h,c.m,0),diff=(now-due)/60000;
+   if(diff>=-5&&diff<=20&&!state.actions[i]&&reminderShown!==i){
+     reminderShown=i;$("missionReminder").classList.remove("hidden");
+     $("reminderText").textContent=`${missions[i].time}｜${missions[i].action}`;
+     $("reminderJump").onclick=()=>{document.querySelector(`[data-mission="${i}"]`)?.scrollIntoView({behavior:"smooth",block:"center"});$("missionReminder").classList.add("hidden")};
+   }
+ });
+}
+$("reminderClose").onclick=()=>$("missionReminder").classList.add("hidden");
+setInterval(checkMissionReminder,30000);setTimeout(checkMissionReminder,1000);
+
+
+const dbg=new URLSearchParams(location.search).get("debug");
+if(dbg){
+  if(dbg==="missions"){setTimeout(()=>$("missions").scrollIntoView(),200)}
+  if(["shoot","shuffle","star","duo"].includes(dbg)){
+    state.actions=[true,true,true,true,true];state.pieces=[false,false,false,false,false];render();
+    const map={shoot:1,shuffle:2,star:3,duo:4};setTimeout(()=>openGame(map[dbg]),200);
+  }
+  if(dbg==="puzzle"){state.actions=[1,1,1,1,1].map(Boolean);state.pieces=[1,1,1,1,1].map(Boolean);render();setTimeout(openPuzzle,200)}
+  if(dbg==="hold"){state.actions=[1,1,1,1,1].map(Boolean);state.pieces=[1,1,1,1,1].map(Boolean);render();setTimeout(()=>{$("puzzleModal").classList.remove("hidden");showTouchScene()},200)}
+  if(dbg==="final"){state.actions=[1,1,1,1,1].map(Boolean);state.pieces=[1,1,1,1,1].map(Boolean);render();setTimeout(()=>{$("puzzleModal").classList.remove("hidden");showFinalMessage()},200)}
+}
+
 window.__LAST_PIECE_DEBUG__={
  version:VERSION,
  setAll(){state.actions=[1,1,1,1,1].map(Boolean);state.pieces=[1,1,1,1,1].map(Boolean);save();render()},
- reset(){localStorage.removeItem("lastPieceV3");location.reload()},
+ reset(){localStorage.removeItem("lastPieceV5");location.reload()},
  state
 };
 </script>
